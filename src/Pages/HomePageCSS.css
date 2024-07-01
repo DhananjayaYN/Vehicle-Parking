@@ -136,5 +136,8 @@
 .water_mark{
     position: absolute;
     left: 0;
-    border: 0;
+    bottom: 0;
+    width: 48%;
+    opacity: 0.1;
 }
+

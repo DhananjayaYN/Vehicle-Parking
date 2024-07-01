@@ -4,6 +4,7 @@ import Footer from '../Components/Footer';
 import Navibar from '../Components/NaviBar'
 import logo from '../Images/inner logo.svg'
 import home_img from '../Images/Home image.svg'
+import watermark from '../Images/hidden logo.svg'
 
 export default function HomePage() {
   return (
@@ -32,14 +33,17 @@ export default function HomePage() {
                 <div class='container'>
                     <p class='main_topic'>"Park with Ease,<br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reserve with Confidence"</p>
-                    <div class='change_mode'>asfdvd</div>
+                    <div class='change_mode'>
+                        <p>Business Mode</p>
+                        <div class=''></div>
+                    </div>
                     <p class="description">
                     Welcome to Mr. Park - your go-to solution for easy and convenient parking. 
                     Find and reserve parking spots in real-time with just a few clicks. 
                     Say goodbye to parking hassles and hello to seamless parking experiences. Your spot awaits!
                     </p>
                     <div class='rectragle'></div>
-                    <img src={logo} alt='Logo' class='water_mark'/>
+                    <img src={watermark} alt='Logo' class='water_mark'/>
                     <div class='triangle'></div>
                     <img src={home_img} alt='Home_image' class='home_image'/>
                 </div>
