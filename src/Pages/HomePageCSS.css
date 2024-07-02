@@ -62,7 +62,10 @@
     height: 68%;
     display: block;
     margin: 0 auto;
-    background-color: red;
+    border-radius: 10%;
+}
+
+LoadScript,GoogleMap{
     border-radius: 10%;
 }
 

@@ -5,6 +5,24 @@ import Navibar from '../Components/NaviBar'
 import logo from '../Images/inner logo.svg'
 import home_img from '../Images/Home image.svg'
 import watermark from '../Images/hidden logo.svg'
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
+
+
+const center = {
+    lat: 6.9271, // latitude in colombo
+    lng: 79.8612, // longitude in colombo
+  };
+
+const mapContainerStyle = { // map style
+    width: '100%',
+    height: '100%',
+};
+
+const option = {
+    
+}
+
+
 
 export default function HomePage() {
   return (
@@ -17,7 +35,16 @@ export default function HomePage() {
                         <input type='text' placeholder="Search..." class='search'/>
                     </div>
                     <p>Find Nearby Parking Location</p>
-                    <div class='Map_view'></div>
+                    <div class='Map_view'>
+                        <LoadScript googleMapsApiKey={'AIzaSyDXLZ8bWEPoplJetqqQJa-m2f6pAiVKo1c'}>
+                            <GoogleMap
+                            mapContainerStyle={mapContainerStyle}
+                            center={center}
+                            zoom={8}
+                        
+                            />
+                        </LoadScript>
+                    </div>
                 </div>
                 <div class='shops'>
                     <div class='shop_view'>
