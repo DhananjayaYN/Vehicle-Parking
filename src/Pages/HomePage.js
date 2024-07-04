@@ -40,7 +40,7 @@ export default function HomePage() {
                             <GoogleMap
                             mapContainerStyle={mapContainerStyle}
                             center={center}
-                            zoom={8}
+                            zoom={7}
                         
                             />
                         </LoadScript>
