@@ -2,12 +2,15 @@
 //import NaviBar from "./Components/NaviBar"
 //import Footer from "./Components/Footer";
 //import SideBarUser from "./Components/SideBarUser";
-import HomePage from "./Pages/HomePage";
+
+import BussReg from "./Pages/BussReg";
+
+// import HomePage from "./Pages/HomePage";
 
 function App() {
   return (
     <div className="App">
-      <HomePage/>
+      <BussReg />
     </div>
   );
 }
