@@ -2,8 +2,8 @@ import React from 'react'
 import './HomePageCSS.css';
 import Footer from '../Components/Footer';
 import Navibar from '../Components/NaviBar'
+import SelectVehicle from '../Components/SelectVehicle';
 import logo from '../Images/inner logo.svg'
-import home_img from '../Images/Home image.svg'
 import watermark from '../Images/hidden logo.svg'
 
 export default function HomePage() {
@@ -16,36 +16,21 @@ export default function HomePage() {
                     <div class='search_bar'>
                         <input type='text' placeholder="Search..." class='search'/>
                     </div>
-                    <p>Find Nearby Parking Location</p>
-                    <div class='Map_view'></div>
+                   
                 </div>
-                <div class='shops'>
-                    <div class='shop_view'>
-
-                    </div>
-                    <button class='more'>More</button>
-                </div>
+               
             </div>
             <div class='rightside_box'>
                 <div class='navibar_box'>
                     <Navibar/>
                 </div>
                 <div class='container'>
-                    <p class='main_topic'>"Park with Ease,<br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reserve with Confidence"</p>
-                    <div class='change_mode'>
-                        <p>Business Mode</p>
-                        <div class=''></div>
+                    <div>
+                        <SelectVehicle/>
                     </div>
-                    <p class="description">
-                    Welcome to Mr. Park - your go-to solution for easy and convenient parking. 
-                    Find and reserve parking spots in real-time with just a few clicks. 
-                    Say goodbye to parking hassles and hello to seamless parking experiences. Your spot awaits!
-                    </p>
-                    <div class='rectragle'></div>
-                    <img src={watermark} alt='Logo' class='water_mark'/>
-                    <div class='triangle'></div>
-                    <img src={home_img} alt='Home_image' class='home_image'/>
+                    <div class='rectragle'>
+                        <img src={watermark} alt='Logo' class='water_mark'/>
+                    </div>
                 </div>
             </div>
         </div>
