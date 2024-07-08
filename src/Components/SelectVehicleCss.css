@@ -1,5 +1,73 @@
 .TopicBox{
     position: absolute;
     bottom: 80%;
-    left: 40%;
+    left: 30%;
+}
+
+.TopicText{
+    color: #0F5245;
+    font-size: 64px;
+    font-weight: 500;
+}
+
+.CategoryBox{
+    position: absolute;
+    bottom: 30%;
+
+}
+
+.CategoryList{
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin :0;
+    width: 70%;
+    /* margin-left: 30%; */
+    list-style: none;
+    text-align: center;
+
+}
+
+.CategoryList a{
+    color: inherit;
+    text-decoration: none;
+}
+
+.CategoryContainer{
+    position: relative;
+    width: 40%;
+    height: 40%;
+    color: #0F5245;
+    padding: 10px;
+    margin: 165px;
+    border: 4px solid #0F5245;
+    border-radius: 50px;
+    transition: background-color 0.3s ease; /* Add transition for smooth effect */
+
+}
+
+.CategoryContainer a{
+    color: #0F5245;
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.CategoryImage svg path {
+    fill: #0F5245; /* Default fill color */
+    transition: fill 0.3s ease;
+}
+
+.CategoryContainer:hover{
+    background-color: #0F5245;
+    /* color: white; */
+}
+
+.CategoryContainer:hover .CategoryImage svg path {
+    fill: white;
+}
+
+.CategoryContainer:hover a {
+    color: white;
 }

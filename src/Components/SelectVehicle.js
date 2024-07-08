@@ -1,21 +1,40 @@
 import React from "react";
+import { ReactSVG } from 'react-svg';
 import './SelectVehicleCss.css';
+import CarImage from '../Images/Cutomer/VehicleCategories/Car.svg';
+import BikeImage from '../Images/Cutomer/VehicleCategories/Bike.svg';
+import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg';
 
 export default function SelectVehicle() {
-    return(
-        <div class = 'SelectVehicleBox'>
-            <div class = 'TopicBox'>
-                <p class = 'TopicText'>
+    return (
+        <div className='SelectVehicleBox'>
+            <div className='TopicBox'>
+                <p className='TopicText'>
                     Select Your Vehicle Type
                 </p>
             </div>
-            <div class = 'CategoriesBox'>
-                <ul class = 'CategoryList'>
-                    <li class = 'Car'><a href="">Car</a></li>
-                    <li class = 'Bike'><a href="">Bike</a></li>
-                    <li class = 'ThreeWheel'><a href="">Three Wheel</a></li>
+            <div className='CategoryBox'>
+                <ul className='CategoryList'>
+                    <li className='Car'>
+                        <div className='CategoryContainer'>
+                            <ReactSVG src={CarImage} className="CategoryImage" />
+                            <a href="">Car</a>
+                        </div>
+                    </li>
+                    <li className='Bike'>
+                        <div className='CategoryContainer'>
+                            <ReactSVG src={BikeImage} className="CategoryImage" />
+                            <a href="">Bike</a>
+                        </div>
+                    </li>
+                    <li className='ThreeWheel'>
+                        <div className='CategoryContainer'>
+                            <ReactSVG src={BusImage} className="CategoryImage" />
+                            <a href="">Three Wheel</a>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
-    )
+    );
 }
