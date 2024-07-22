@@ -1,10 +1,14 @@
 import React from 'react'
+import { useState, useEffect } from 'react';
 import './HomePageCSS.css';
 import Footer from '../Components/Footer';
 import Navibar from '../Components/NaviBar'
 import logo from '../Images/inner logo.svg'
 import home_img from '../Images/Home image.svg'
 import watermark from '../Images/hidden logo.svg'
+import search from '../Images/search.svg'
+import map from '../Images/map.svg'
+import list from '../Images/list.svg'
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
 
@@ -25,10 +29,50 @@ const option = {
 
 
 export default function HomePage() {
+
+    const [showSidebarBox, showFullSidebar] = useState(window.innerWidth <= 900);
+
+    // Function to handle window resize
+    const handleResize = () => {
+        if (window.innerWidth > 900) {
+            showFullSidebar(true);
+        } else {
+            showFullSidebar(false);
+        }
+    };
+
+    // Set up the resize event listener
+    useEffect(() => {
+        // Call the handler initially to set the correct state
+        handleResize();
+    
+        // Add the resize event listener
+        window.addEventListener('resize', handleResize);
+
+        // Cleanup the event listener on component unmount
+        return () => {
+        window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    //const [showSidebarBox, showFullSidebar] = useState(false);
+    const show = () =>{
+        showFullSidebar(prevState => !prevState);
+    }
+
   return (
     <div class='Home'>
         <div class='main_box'>
-            <div class='sidebar_box'>
+            <div className="sidebar_mobile">
+                <img src={logo} alt='Logo' className='logo_mobile'/><br></br>
+                <ul className='side_bar_tool'>
+                    <li><img src={search} alt='Search' className='side_tool'/></li>
+                    <li><img src={map} alt='map' className='side_tool'/></li>
+                    <li><img src={list} alt='list' className='side_tool'/></li>
+                </ul>
+                <button onClick={show} className={showSidebarBox? 'show_button_move' : 'show_button' }>{showSidebarBox? '<<' : '>>'}</button>
+            </div>
+            <div class={showSidebarBox ? 'sidebar_box' : 'sidebar_box_hidden'}>
                 <img src={logo} alt='Logo' class='logo'/>
                 <div class='Map'>
                     <div class='search_bar'>
