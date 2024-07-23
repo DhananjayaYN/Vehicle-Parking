@@ -233,4 +233,28 @@ LoadScript,GoogleMap{
     .main_box{
         grid-template-columns: 10% 90%;
     }
+
+    .description{
+        
+        left: 8%;
+        width: 45%;
+    }
+
+    .main_topic{
+        font-size: clamp(30px, 5vw, 100px)
+    }
+
+    .rectragle{
+        height: 30%;
+    }
+
+    .triangle{
+        border-left: 85vh solid transparent;
+        
+    }
+
+    .footer_box{
+        font-size: clamp(8px, 2vw, 16px)
+    }
+
   }

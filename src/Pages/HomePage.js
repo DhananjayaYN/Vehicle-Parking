@@ -63,6 +63,8 @@ export default function HomePage() {
   return (
     <div class='Home'>
         <div class='main_box'>
+
+            {/*--------------------responsive side bar-------------------------*/}
             <div className="sidebar_mobile">
                 <img src={logo} alt='Logo' className='logo_mobile'/><br></br>
                 <ul className='side_bar_tool'>
@@ -72,6 +74,9 @@ export default function HomePage() {
                 </ul>
                 <button onClick={show} className={showSidebarBox? 'show_button_move' : 'show_button' }>{showSidebarBox? '<<' : '>>'}</button>
             </div>
+
+            {/*------------------------------------------------------------------*/}
+
             <div class={showSidebarBox ? 'sidebar_box' : 'sidebar_box_hidden'}>
                 <img src={logo} alt='Logo' class='logo'/>
                 <div class='Map'>
@@ -97,10 +102,16 @@ export default function HomePage() {
                     <button class='more'>More</button>
                 </div>
             </div>
+
+            {/*---------------------rightside box----------------------------*/}
+
             <div class='rightside_box'>
                 <div class='navibar_box'>
                     <Navibar/>
                 </div>
+
+                {/*---------------------------container----------------------------------*/}
+                
                 <div class='container'>
                     <p class='main_topic'>"Park with Ease,<br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reserve with Confidence"</p>
