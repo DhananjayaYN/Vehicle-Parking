@@ -1,76 +1,75 @@
-.Home{
+.C_Home{
     width: 100%;
     height: 100vh;
     display: grid;
     grid-template-rows: 94% 6%;
 }
 
-.main_box{
+.C_main_box{
     display: grid;
     grid-template-columns: 25% 75%;
     
 }
 
-.sidebar_box{
-    background-color: rgba(15, 82, 69, 1);
+.C_sidebar_box{
+    background-color: rgba(19, 166, 138, 1);
     align-items: center;
     display: grid;
-    grid-template-rows: 20% 45% 35%;
+    grid-template-rows: 20% 15% 30% 35%;
     z-index: 0;
 }
 
-.rightside_box{
+.C_rightside_box{
     display: grid;
     grid-template-rows: 10% 90%;
 }
 
-.container{
+.C_container{
     background-color: white;
     position: relative;
 }
 
-.logo{
+.C_logo{
     height: 75%;
     display: flex;
     justify-self: center;
 }
 
-.Map{
+.C_Map{
     height: 100%;
     text-align: center;
     
 }
 
-.shops{
+.C_shops{
     height: 100%;
     text-align: center; 
 }
 
-.search{
+.C_search{
     width: 50%;
     height: 20px;
     border-radius: 10px;
     
 }
 
-.Map p{
+.C_Map p{
     font-size: small;
     color: white;
 } 
 
-.Map_view{
+.C_profile{
     width: 75%;
     height: 68%;
     display: block;
     margin: 0 auto;
     border-radius: 10%;
+    background-color: aqua;
 }
 
-LoadScript,GoogleMap{
-    border-radius: 10%;
-}
+.C_
 
-.shop_view{
+.C_shop_view{
     background-color: aqua;
     display: block;
     margin: 0 auto;
@@ -79,12 +78,12 @@ LoadScript,GoogleMap{
     border-radius: 10%;
 }
 
-.more{
+.C_more{
     border-radius: 10px;
     width: 80px;
 }
 
-.main_topic{
+.C_main_topic{
     position: absolute;
     top: 3%;
     left: 5%;
@@ -94,7 +93,7 @@ LoadScript,GoogleMap{
     margin: 0;
 }
 
-.description{
+.C_description{
     position: absolute;
     font-size: 14px;
     top: 30%;
@@ -103,7 +102,7 @@ LoadScript,GoogleMap{
     text-align: justify;
 }
 
-.change_mode{
+.C_change_mode{
     position: absolute;
     top: 5%;
     right: 5%;
@@ -113,17 +112,17 @@ LoadScript,GoogleMap{
     padding: 0;
 }
 
-.triangle{
+.C_triangle{
     width: 0;
     height: 0;
     border-left: 100vh solid transparent;
-    border-bottom: 50vh solid rgba(15, 82, 69, 1);
+    border-bottom: 50vh solid rgba(19, 166, 138, 1);
     position: absolute;
     right: 0;
     bottom: 0;
 }
 
-.home_image{
+.C_home_image{
     width: 60%;
     position: absolute;
     right: 0;
@@ -132,7 +131,7 @@ LoadScript,GoogleMap{
     margin: 0;
 }
 
-.rectragle{
+.C_rectragle{
     width: 100%;
     height: 40%;
     background-color: rgba(164, 217, 207, 1);
@@ -141,7 +140,7 @@ LoadScript,GoogleMap{
     bottom: 0;
 }
 
-.water_mark{
+.C_water_mark{
     position: absolute;
     left: 0;
     bottom: 0;
@@ -149,17 +148,17 @@ LoadScript,GoogleMap{
     opacity: 0.1;
 }
 
-.sidebar_mobile{
+.C_sidebar_mobile{
     display: none;
 }
 
 /*-----------------------------------------------------------------*/
 @media (max-width: 900px) {
-    .sidebar_box_hidden { 
+    .C_sidebar_box_hidden { 
       display: none;
     }
 
-    .sidebar_box{
+    .C_sidebar_box{
         position: fixed;
         top: 0;
         left: 0;
@@ -168,18 +167,18 @@ LoadScript,GoogleMap{
         height: 94%;
     }
 
-    .sidebar_mobile{ /*new small side bar*/
+    .C_sidebar_mobile{ /*new small side bar*/
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 100%;
         height: 100%;
-        background-color: rgba(15, 82, 69, 1);
+        background-color: rgba(19, 166, 138, 1);
         margin: 0;
         padding: 0;
     }
 
-    .show_button{  /*button for change the side bar size,minimuze side bar*/
+    .C_show_button{  /*button for change the side bar size,minimuze side bar*/
         width: 50px;
         height: 50px;
         border-radius: 50px;
@@ -196,7 +195,7 @@ LoadScript,GoogleMap{
         font-weight: 600;
     }
 
-    .show_button_move{ /*button for change the side bar size,maximuze side bar*/
+    .C_show_button_move{ /*button for change the side bar size,maximuze side bar*/
         position: absolute;
         width: 50px;
         height: 50px;
@@ -215,12 +214,12 @@ LoadScript,GoogleMap{
         font-weight: 600;
     }
 
-    .logo_mobile{ /*small side bar logo*/
+    .C_logo_mobile{ /*small side bar logo*/
         width: 80%;
         margin: 20px 0 0 0;
     }
 
-    .side_bar_tool{ /*small side bar list*/
+    .C_side_bar_tool{ /*small side bar list*/
         list-style: none;
         align-items: center;
         justify-content: space-between;
@@ -229,30 +228,30 @@ LoadScript,GoogleMap{
         
     }
 
-    .side_tool{
+    .C_side_tool{
         max-width: 100%;
         margin-bottom: 20px;
     }
 
-    .main_box{
+    .C_main_box{
         grid-template-columns: 10% 90%;
     }
 
-    .description{
+    .C_description{
         
         left: 8%;
         width: 45%;
     }
 
-    .main_topic{
+    .C_main_topic{
         font-size: clamp(30px, 5vw, 100px)
     }
 
-    .rectragle{
+    .C_rectragle{
         height: 30%;
     }
 
-    .triangle{
+    .C_triangle{
         border-left: 85vh solid transparent;
         
     }
