@@ -1,0 +1,44 @@
+.toggle_main{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    font-size: 100;
+}
+
+.change_mode_p{
+    margin: 0;
+}
+
+.t_button{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border: none;
+    border-radius: 50px;
+    justify-content: center;
+    height: 30px;
+    width: 100px;
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+    background-color: rgb(7, 126, 7);
+}
+
+#user_dot, #owner_dot{
+    width: 26px;
+    height: 26px;
+    background-color: blue;
+    
+    align-self: center;
+    
+    padding: 0;
+}
+
+.t_Owner{
+    display: none;
+}
+
+
+

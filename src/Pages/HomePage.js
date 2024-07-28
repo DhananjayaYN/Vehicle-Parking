@@ -10,6 +10,7 @@ import search from '../Images/search.svg'
 import map from '../Images/map.svg'
 import list from '../Images/list.svg'
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import Toggle_button from '../Components/Toggle_button';
 
 
 const center = {
@@ -111,13 +112,12 @@ export default function HomePage() {
                 </div>
 
                 {/*---------------------------container----------------------------------*/}
-                
+
                 <div class='container'>
                     <p class='main_topic'>"Park with Ease,<br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reserve with Confidence"</p>
                     <div class='change_mode'>
-                        <p>Business Mode</p>
-                        <div class=''></div>
+                        <Toggle_button/>
                     </div>
                     <p class="description">
                     Welcome to Mr. Park - your go-to solution for easy and convenient parking. 

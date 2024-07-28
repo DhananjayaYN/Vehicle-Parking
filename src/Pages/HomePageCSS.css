@@ -105,8 +105,13 @@ LoadScript,GoogleMap{
 
 .change_mode{
     position: absolute;
-    top: 10%;
-    right: 10%;
+    top: 5%;
+    right: 5%;
+    width: 25%;
+    height: 8%;
+    background-color: aqua;
+    margin: 0;
+    padding: 0;
 }
 
 .triangle{
@@ -253,8 +258,6 @@ LoadScript,GoogleMap{
         
     }
 
-    .footer_box{
-        font-size: clamp(8px, 2vw, 16px)
-    }
+    
 
   }
