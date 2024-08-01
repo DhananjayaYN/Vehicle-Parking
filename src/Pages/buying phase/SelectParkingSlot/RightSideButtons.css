@@ -1,0 +1,54 @@
+*{
+    font-family: "Roboto";
+    font-weight: 400;
+}
+
+.button-title{
+    font-size: 19px;
+}
+
+.rightside-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 50vw;
+    flex-wrap: wrap;
+}
+
+#reservation{
+    width: 180px;
+    height: 48px;
+    background-color: #FEFEFE;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    border-radius: 10%;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "Roboto";
+    font-size: 16px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* .date-picker{
+    display: flex;
+    justify-content: center;
+    background-color: #FEFEFE;
+    box-shadow: #000000;
+    height: 48;
+    width: 179;
+    font-size: 16;
+    padding: 16px 24px 16px 24px;
+    
+} */
+/* .date-picker {
+    position: absolute;
+    top: 50px; 
+    z-index: 1000;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+} */

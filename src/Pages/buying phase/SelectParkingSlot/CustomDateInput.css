@@ -1,0 +1,20 @@
+.custom-date-input {
+    width: 180px;
+    height: 48px;
+    background-color: #FEFEFE;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    border-radius: 10%;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "Roboto";
+    font-size: 16px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.custom-date-input .calendar-icon {
+    margin-right: 8px;
+}

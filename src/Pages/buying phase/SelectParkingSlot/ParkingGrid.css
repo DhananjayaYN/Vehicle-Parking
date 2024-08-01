@@ -1,0 +1,50 @@
+/* ParkingGrid.css */
+.parking-container {
+    padding-left: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 100px; 
+}
+
+.parking-section {
+    justify-content: space-around;
+    padding: 0; /* Remove padding inside sections */
+    margin: 0;  /* Remove margin around sections */
+}
+
+.slot-pair {
+    display: flex;
+    position: relative; /* Needed for the pseudo-element positioning */
+}
+
+.slot-pair::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background-color: #000; /* Divider color */
+}
+
+.parking-slot {
+    width: 90px;
+    height: 55px;
+    border: 1px solid #000;
+    border-right: none;
+    border-left: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;  
+    box-sizing: border-box; 
+}
+
+.slots-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0; 
+    padding: 0; 
+    margin: 0; 
+}
+    
