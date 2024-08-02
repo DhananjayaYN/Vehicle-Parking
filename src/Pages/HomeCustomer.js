@@ -46,8 +46,8 @@ export default function HomeCustomer() {
     }
 
   return (
-    <div class='C_Home'>
-        <div class='C_main_box'>
+    <div className='C_Home'>
+        <div className='C_main_box'>
 
             {/*--------------------responsive side bar-------------------------*/}
             <div className="C_sidebar_mobile">
@@ -62,14 +62,14 @@ export default function HomeCustomer() {
 
             {/*------------------------------------------------------------------*/}
 
-            <div class={showSidebarBox ? 'C_sidebar_box' : 'C_sidebar_box_hidden'}>
-                <img src={logo} alt='Logo' class='C_logo'/>
-                <div class='C_Map'>
-                    <div class='C_search_bar'>
-                        <input type='text' placeholder="Search..." class='C_search'/>
+            <div className={showSidebarBox ? 'C_sidebar_box' : 'C_sidebar_box_hidden'}>
+                <img src={logo} alt='Logo' className='C_logo'/>
+                <div className='C_Map'>
+                    <div className='C_search_bar'>
+                        <input type='text' placeholder="Search..." className='C_search'/>
                     </div>
                     <p>Find Nearby Parking Location</p>
-                    <div class='C_profile'>
+                    <div className='C_profile'>
                         
                     </div>
                     
@@ -77,42 +77,42 @@ export default function HomeCustomer() {
                 <div className='C_start'>
                         
                 </div>
-                <div class='C_shops'>
-                    <div class='C_shop_view'>
+                <div className='C_shops'>
+                    <div className='C_shop_view'>
 
                     </div>
-                    <button class='C_more'>More</button>
+                    <button className='C_more'>More</button>
                 </div>
             </div>
 
             {/*---------------------rightside box----------------------------*/}
 
-            <div class='C_rightside_box'>
-                <div class='C_navibar_box'>
+            <div className='C_rightside_box'>
+                <div className='C_navibar_box'>
                     <Navibar/>
                 </div>
 
                 {/*---------------------------container----------------------------------*/}
 
-                <div class='C_container'>
-                    <p class='C_main_topic'>"Provide Stress Free Parking,<br/>
+                <div className='C_container'>
+                    <p className='C_main_topic'>"Provide Stress Free Parking,<br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For Your Customer"</p>
-                    <div class='C_change_mode'>
+                    <div className='C_change_mode'>
                         <Toggle_button/>
                     </div>
-                    <p class="C_description">
+                    <p className="C_description">
                     Welcome to Mr. Park - your go-to solution for easy and convenient parking. 
                     Find and reserve parking spots in real-time with just a few clicks. 
                     Say goodbye to parking hassles and hello to seamless parking experiences. Your spot awaits!
                     </p>
-                    <div class='C_rectragle'></div>
-                    <img src={watermark} alt='Logo' class='C_water_mark'/>
-                    <div class='C_triangle'></div>
-                    <img src={home_img} alt='Home_image' class='C_home_image'/>
+                    <div className='C_rectragle'></div>
+                    <img src={watermark} alt='Logo' className='C_water_mark'/>
+                    <div className='C_triangle'></div>
+                    <img src={home_img} alt='Home_image' className='C_home_image'/>
                 </div>
             </div>
         </div>
-        <div class='C_footer_box'>
+        <div className='C_footer_box'>
             <Footer/>
         </div>
     </div>

@@ -30,6 +30,9 @@ export default function Toggle_button() {
             checkedChildren = "Owner" 
             unCheckedChildren = "User" 
             onChange={handleToggle}
+            style={{
+              backgroundColor : isUser ? 'rgba(19, 166, 138, 1)' : 'rgba(15, 82, 69, 1)'
+            }}
         />
         
     </div>
