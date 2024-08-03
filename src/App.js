@@ -1,4 +1,4 @@
-//import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 //import NaviBar from "./Components/NaviBar"
 //import Footer from "./Components/Footer";
 //import SideBarUser from "./Components/SideBarUser";
@@ -8,7 +8,17 @@ import CustomerPage from "./Pages/CustomerPage";
 function App() {
   return (
     <div className="App">
-      <CustomerPage/>
+      <BrowserRouter>
+        <div className="pages">
+          <Routes>
+            <Route 
+              path = "/"
+              element = {<CustomerPage/>}
+            />
+          </Routes>
+        </div>
+      </BrowserRouter>
+
     </div>
   );
 }

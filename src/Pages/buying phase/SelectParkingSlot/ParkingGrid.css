@@ -1,20 +1,22 @@
-/* ParkingGrid.css */
 .parking-container {
-    padding-left: 100px;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* Prevent wrapping to ensure horizontal scrolling */
     gap: 100px; 
+    margin-left: 50px;
+    margin-right: 100px;
 }
 
 .parking-section {
     justify-content: space-around;
-    padding: 0; /* Remove padding inside sections */
-    margin: 0;  /* Remove margin around sections */
+    padding: 0; 
+    margin: 0;  
 }
-
+.parking-section:last-child {
+    margin-right: 50px;
+}
 .slot-pair {
     display: flex;
-    position: relative; /* Needed for the pseudo-element positioning */
+    position: relative;
 }
 
 .slot-pair::after {
@@ -24,7 +26,7 @@
     bottom: 0;
     left: 50%;
     width: 1px;
-    background-color: #000; /* Divider color */
+    background-color: #000; 
 }
 
 .parking-slot {
@@ -41,10 +43,23 @@
 }
 
 .slots-grid {
-    display: flex;
-    flex-direction: column;
     gap: 0; 
     padding: 0; 
     margin: 0; 
 }
-    
+
+.parking-wrapper {
+    flex: 1;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    /* white-space: nowrap; */
+    /* white-space: 100px; */
+    padding-right: 100px;
+}
+
+.whitespace{
+    width: 100px;
+    justify-content: space-around;
+    padding: 0; 
+    margin: 0;  
+}

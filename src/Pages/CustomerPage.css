@@ -57,7 +57,8 @@
     position: relative; /* Ensure the container is the reference point for absolute positioning */
     width: 100%; /* Adjust as needed */
     height: 100%; /* Adjust as needed */
-    overflow: hidden; 
+    /* overflow-y: hidden; */
+    /* overflow: hidden;  */
 }
 
 .content{

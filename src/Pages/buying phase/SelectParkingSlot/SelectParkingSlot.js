@@ -16,13 +16,35 @@ import BikeImage from '../Images/Cutomer/VehicleCategories/Bike.svg';
 import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg'; 
 
 
-// const slots = [
-//   'A01', 'A02', 'A03', 'A04', 'A05',
-//   'B01', 'B02', 'B03', 'B04', 'B05'
-//   // Add more slots as needed
-// ];
-
 export default function SelectParkingSlot({ selectedCategory }) {
+
+  const [parkings, setParkings] = useState(null)
+
+  // useEffect(() => {
+  //   const fetchParkings = async () => {
+  //     const response = await fetch('/api/parking-slots')
+  //     const json = await response.json()
+
+  //     if(response.ok){
+  //       setParkings(json)
+  //     }
+  //   }
+
+  //   fetchParkings()
+  // }, [])
+
+  useEffect(() => {
+    const fetchParkingsByCategory = async () => {
+      const response = await fetch(`/api/parking-slots/?vehicle_type=${selectedCategory}`)
+      const json = await response.json()
+
+      if(response.ok){
+        setParkings(json)
+      }
+    }
+
+    fetchParkingsByCategory()
+  }, [selectedCategory])
 
   const [vehicleType, setVehicleType] = useState(selectedCategory);
 
@@ -40,6 +62,8 @@ export default function SelectParkingSlot({ selectedCategory }) {
     ThreeWheel: <ThreeWheelIcon />
   };
 
+  // const filteredParkings = parkings ? parkings.filter(parking => parking.vehicle_type === selectedCategory) : [];
+
   // const handleVehicleTypeChange = (event) => {
   //   setVehicleType(event.target.value);
   // };
@@ -47,6 +71,7 @@ export default function SelectParkingSlot({ selectedCategory }) {
   return (
     <div className="parkingSlotContainer">
       <div className="filter-bar">
+        {console.log(parkings)}
         <div className='leftside'>
           <Navbar>
             <NavItem 
@@ -63,7 +88,10 @@ export default function SelectParkingSlot({ selectedCategory }) {
         </div>
       </div>
       <div className="parking-grid">
-        <ParkingGrid></ParkingGrid>
+        {parkings ? 
+          <ParkingGrid parkings={parkings} /> : 
+          <p>Loading...</p>
+        }
       </div>
       {/* <div className="slotsGrid">
         {slots.map((slot) => (
