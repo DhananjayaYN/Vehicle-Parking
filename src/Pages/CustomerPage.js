@@ -1,22 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './CustomerPage.css';
 import Footer from '../Components/Footer';
 import Navibar from '../Components/NaviBar';
 import SelectVehicle from './buying phase/SelectVehiclePage/SelectVehicle';
 import SelectParkingSlot from './buying phase/SelectParkingSlot/SelectParkingSlot';
+import ParkingContext from '../context/ParkingContext';
 import logo from '../Images/inner logo.svg';
 import watermark from '../Images/hidden logo.svg';
 
 export default function CustomerPage() {
-    const [selectedCategory, setSelectedCategory] = useState(null);
 
-    const handleCategorySelect = (category) => {
-        setSelectedCategory(category);
-    };
+    const { selectedCategory, setSelectedCategory } = useContext(ParkingContext);
 
-    const handleBackClick = () => {
-        setSelectedCategory(null);
-    };
+    const handleCategorySelect = (type) => {
+        setSelectedCategory(type);
+      };
+
+    // const [selectedCategory, setSelectedCategory] = useState(null);
+
+    // const handleCategorySelect = (category) => {
+    //     setSelectedCategory(category);
+    // };
+
+    // const handleBackClick = () => {
+    //     setSelectedCategory(null);
+    // };
 
     return (
         <div className='Home'>

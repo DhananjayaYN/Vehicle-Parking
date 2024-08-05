@@ -1,14 +1,17 @@
-import React, { useState, useEffect , useRef} from 'react';
+import React, { useState, useEffect , useRef, useContext} from 'react';
 
 // import Select from 'react-select';
 import { ReactSVG } from 'react-svg'; 
 import './SelectParkingSlot.css';
 import './RightSideButtons';
+// import { useParkingContext } from '../../../hooks/useParkingContext';
+import ParkingContext from '../../../context/ParkingContext';
 // import CustomSelect from './CustomSelect'; 
 import { ReactComponent as CarIcon } from '../Images/Cutomer/VehicleCategories/Car.svg';
 import { ReactComponent as ArrowDownIcon } from '../../../Images/Cutomer/FilterBar/arrow_down.svg'
 import { ReactComponent as BikeIcon } from '../Images/Cutomer/VehicleCategories/Bike.svg'
 import { ReactComponent as ThreeWheelIcon } from '../Images/Cutomer/VehicleCategories/Bus.svg'
+import cartIcon from '../../../Images/Cutomer/selectParking/cart.svg'
 import RightSideButtons from './RightSideButtons';
 import ParkingGrid from './ParkingGrid';
 import CarImage from '../Images/Cutomer/VehicleCategories/Car.svg';
@@ -16,8 +19,10 @@ import BikeImage from '../Images/Cutomer/VehicleCategories/Bike.svg';
 import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg'; 
 
 
-export default function SelectParkingSlot({ selectedCategory }) {
+// export default function SelectParkingSlot({ selectedCategory }) {
+  export default function SelectParkingSlot() {
 
+  const { selectedCategory, setSelectedCategory } = useContext(ParkingContext);
   const [parkings, setParkings] = useState(null)
 
   // useEffect(() => {
@@ -46,14 +51,18 @@ export default function SelectParkingSlot({ selectedCategory }) {
     fetchParkingsByCategory()
   }, [selectedCategory])
 
-  const [vehicleType, setVehicleType] = useState(selectedCategory);
+  // const [vehicleType, setVehicleType] = useState(selectedCategory);
 
-  useEffect(() => {
-    setVehicleType(selectedCategory);
-  }, [selectedCategory]);
+  // useEffect(() => {
+  //   setVehicleType(selectedCategory);
+  // }, [selectedCategory]);
+
+  // const handleVehicleTypeChange = (type) => {
+  //   setVehicleType(type);
+  // };
 
   const handleVehicleTypeChange = (type) => {
-    setVehicleType(type);
+    setSelectedCategory(type);
   };
 
   const vehicleIcons = {
@@ -92,6 +101,15 @@ export default function SelectParkingSlot({ selectedCategory }) {
           <ParkingGrid parkings={parkings} /> : 
           <p>Loading...</p>
         }
+      </div>
+      <div className="checkout-wrapper">
+      <div className="checkout-section">
+        <button className='cart-button'>
+          <ReactSVG src={cartIcon} className="cart-icon" />
+          Cart
+        </button>
+        <button className='continue-button'>Continue</button>
+      </div>
       </div>
       {/* <div className="slotsGrid">
         {slots.map((slot) => (
@@ -168,13 +186,13 @@ function DropdownMenu({ onSelect }) {
 
   return (
     <div className="dropdown">
-      <DropdownItem icon={<CarIcon />} text="Car">
+      <DropdownItem icon={<CarIcon />} text="Car" className="dropdown-item">
         Car
       </DropdownItem>
-      <DropdownItem icon={<ReactSVG src={BikeImage} />} text="Bike">
+      <DropdownItem icon={<ReactSVG src={BikeImage} />} text="Bike" className = "dropdown-item">
         Bike
       </DropdownItem>
-      <DropdownItem icon={<ReactSVG src={BusImage} />} text="ThreeWheel">
+      <DropdownItem icon={<ReactSVG src={BusImage} />} text="ThreeWheel" className = "dropdown-item">
         Three <br /> Wheel
       </DropdownItem>
     </div>

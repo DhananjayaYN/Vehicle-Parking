@@ -3,35 +3,61 @@ const mongoose = require("mongoose")
 
 const Schema = mongoose.Schema
 
+const slotSchema = new Schema({
+    lot_number: {
+        type: String,
+        required: true
+    },
+    vehicle_type: {
+        type: String,
+        enum: [
+            'car',
+            'bike',
+            'threewheel'
+        ],
+        required: true
+    },
+    availability: { type: Boolean, default: true },
+
+})
+
+const levelSchema = new Schema({
+    level: {
+        type: String, 
+        required: true
+    },
+    slots: [slotSchema]
+})
+
 const parkingSchema = new Schema({
     name: {
         type: String,
         required: true
     },
-    level: {
-        type: String,
-        required: true
-    },
-    lot_number:{
-        type: String,
-        required: true
-    },
-    vehicle_type:{
-        type: String,
-        required: true
-    },
-    start_time:{
-        type: String,
-        required: true
-    },
-    end_time:{
-        type: String,
-        required: true
-    },
-    availability:{
-        type: Boolean,
-        required: true
-    }
+    levels: [levelSchema],
+    open_times: [{
+        day: { 
+            type: Date, 
+        },
+        dates: {
+            type: String,
+            enum: [
+                'monday',
+                'tuesday',
+                'wednesday',
+                'thursday',
+                'friday',
+                'saturday',
+                'sunday'
+            ],
+            required: true
+        },
+        times: [{
+            start_time: { type: String, required: true },
+            end_time: { type: String, required: true },
+        }],
+    }],
+    
 }, { timestamps: true })
 
 module.exports = mongoose.model('Parking', parkingSchema)

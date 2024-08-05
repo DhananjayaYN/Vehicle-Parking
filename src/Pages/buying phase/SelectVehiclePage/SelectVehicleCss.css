@@ -1,3 +1,6 @@
+.SelectVehicleBox{
+    overflow: hidden;
+}
 .TopicBox {
     position: relative;
     bottom: 10%;

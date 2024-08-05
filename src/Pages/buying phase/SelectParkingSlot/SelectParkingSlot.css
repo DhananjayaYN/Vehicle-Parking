@@ -117,7 +117,8 @@
 .parkingSlotContainer {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  /* height: 100%; */
+  height: 87vh;
   overflow: hidden;
 }
 
@@ -136,8 +137,9 @@
 }
 
 .dropdown {
+  z-index: 1;
   position: absolute;
-  top: 100%;
+  top: 20%;
   /* left: 2%; */
   display: flex;
   flex-direction: column;
@@ -151,20 +153,30 @@
   /* padding: 1rem; */
   overflow: hidden;
   transition: height var(--speed) ease;
-  color: #dadce1;
+  color: #FFFFFF;
 }
 
+.dropdown svg{
+  width: 25px;
+}
+
+.dropdown svg path{
+  fill: #FFFFFF;
+}
 
 .menu-item{
   height: 50px;
   display: flex;
   align-items: flex-start;
-  padding: 0.5rem;
+   padding: 0.5rem;
+  /* border:1px solid #0F5245; */
+  /* border-radius: 10px; */
   background-color: #FFFFFF;
   justify-content: space-evenly;
-  align-items: flex-start;
+  align-items: center;
   text-decoration: none;
-  color: #3109e4;
+  color: #0F5245;
+  font-weight: 600;
 }
 
 .menu-item .icon-button {
@@ -183,18 +195,6 @@
 }
 
 
-/* .dropdown-image{
-  fill:#0F5245;
-  width: 40px;
-  height: 40px;
-} */
-
-/* .nav-button svg{
-  fill:#0F5245;
-  width: 40px;
-  height: 40px;
-} */
-
 /* .parking-grid{
    width: 5000px; 
   position: absolute;
@@ -208,6 +208,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  margin-bottom: 20px;
 }
 
 .rightside{
@@ -233,4 +234,72 @@
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.checkout-wrapper{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+}
+
+.checkout-section{
+  /* position: relative; */
+  /* top: 2%; */
+  /* left: 75%; */
+  display: flex;
+  /* /* flex-wrap: wrap; */
+  /* justify-content: right;  */
+  align-items: center;
+  padding-right: 50px;
+}
+
+.cart-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  background-color: #0F5245;
+  color: #FFFFFF;
+  border: 2px solid #0F5245;
+  font-weight: 600;
+  border-radius: 5px;
+  width: 100px;
+  height: 40px;
+  transition: 0.3s ease;
+}
+
+.cart-button:hover{
+  background-color: #FFFFFF;
+  color: #0F5245;
+}
+
+.cart-button svg{
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+}
+
+.cart-button:hover svg path{
+  fill: #0F5245; 
+  transition:0.3s ease;
+}
+
+.continue-button{
+  background-color: #FFFFFF;
+  color: #0F5245;
+  border: 2px solid #0F5245;
+  font-weight: 600;
+
+  border-radius: 5px;
+  /* border: none; */
+  width: 100px;
+  height: 40px;
+  transition: 0.3s ease;
+}
+
+.continue-button:hover{
+  background-color: #0F5245;
+  color: #FFFFFF;
+  /* background-color: #0F52; */
 }

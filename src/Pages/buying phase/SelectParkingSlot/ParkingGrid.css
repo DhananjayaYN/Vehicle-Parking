@@ -14,6 +14,7 @@
 .parking-section:last-child {
     margin-right: 50px;
 }
+
 .slot-pair {
     display: flex;
     position: relative;
@@ -40,6 +41,7 @@
     justify-content: center;
     margin: 0;  
     box-sizing: border-box; 
+    cursor: pointer; /* Change cursor to pointer to indicate clickability */
 }
 
 .slots-grid {
@@ -52,14 +54,24 @@
     flex: 1;
     overflow-x: auto; /* Enable horizontal scrolling */
     overflow-y: auto; /* Enable vertical scrolling */
-    /* white-space: nowrap; */
-    /* white-space: 100px; */
     padding-right: 100px;
+    position: relative; /* Ensure the wrapper is a positioned ancestor */
 }
 
-.whitespace{
+.whitespace {
     width: 100px;
     justify-content: space-around;
     padding: 0; 
     margin: 0;  
+}
+
+.slot-details {
+    position: absolute; /* Position absolute to move freely within the document */
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure the dialog box appears above other elements */
+    white-space: nowrap; /* Prevent text from wrapping */
+    min-width: 200px; /* Minimum width to ensure enough space for content */
 }
