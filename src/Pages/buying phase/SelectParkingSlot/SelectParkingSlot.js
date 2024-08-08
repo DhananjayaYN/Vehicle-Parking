@@ -5,7 +5,8 @@ import { ReactSVG } from 'react-svg';
 import './SelectParkingSlot.css';
 import './RightSideButtons';
 // import { useParkingContext } from '../../../hooks/useParkingContext';
-import ParkingContext from '../../../context/ParkingContext';
+// import ParkingContext from '../../../context/ParkingContext';
+// import ParkingContext from '../../../context/ParkingContext';
 // import CustomSelect from './CustomSelect'; 
 import { ReactComponent as CarIcon } from '../Images/Cutomer/VehicleCategories/Car.svg';
 import { ReactComponent as ArrowDownIcon } from '../../../Images/Cutomer/FilterBar/arrow_down.svg'

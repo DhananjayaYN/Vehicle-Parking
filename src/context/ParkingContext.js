@@ -12,9 +12,6 @@ const [selectedCategory, setSelectedCategory] = useState('');
   );
 };
 
-export default ParkingContext;
-
-
 // export const ParkingContext = createContext();
 
 // export const vehicleTypeReducer = (state, action) => {
