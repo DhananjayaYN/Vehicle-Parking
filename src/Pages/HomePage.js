@@ -11,6 +11,9 @@ import map from '../Images/map.svg'
 import list from '../Images/list.svg'
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import Toggle_button from '../Components/Toggle_button';
+import { HiChevronDoubleRight } from "react-icons/hi";
+import { HiChevronDoubleLeft } from "react-icons/hi";
+import Card_list from '../Components/Places_card';
 
 
 const center = {
@@ -96,11 +99,14 @@ export default function HomePage() {
                         </LoadScript>
                     </div>
                 </div>
-                <div class='shops'>
-                    <div class='shop_view'>
-
+                <div className='shops'>
+                    <div className='shop_view'>
+                        <div className='package'>Packages</div>
+                        <div className='shop_display'>
+                           <Card_list/>
+                        </div>
                     </div>
-                    <button class='more'>More</button>
+                    <button className='more'>More</button>
                 </div>
             </div>
 

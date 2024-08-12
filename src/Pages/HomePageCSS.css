@@ -41,11 +41,6 @@
     
 }
 
-.shops{
-    height: 100%;
-    text-align: center; 
-}
-
 .search{
     width: 50%;
     height: 20px;
@@ -70,10 +65,18 @@ LoadScript,GoogleMap{
     border-radius: 10%;
 }
 
+.shops{
+    height: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+
 .shop_view{
-    background-color: aqua;
+    background-color: rgba(164, 217, 207, 1);
     display: block;
-    margin: 0 auto;
+    margin: auto ;
+    margin-top: 0;
     width: 70%;
     height: 80%;
     border-radius: 10%;
@@ -83,6 +86,28 @@ LoadScript,GoogleMap{
     border-radius: 10px;
     width: 80px;
 }
+
+.package{
+    position: relative;
+    top: 8%;
+    background-color: rgba(217, 217, 217, 1);
+}
+
+.shop_display{
+    position: relative;
+    top: 10%;
+    width: 100%;
+    max-width: 300px;
+    /*align-items: center;
+    background-color: blue;
+    height: 75%;
+    overflow: hidden; 
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    justify-items: center;*/
+}
+
+
 
 .main_topic{
     position: absolute;
