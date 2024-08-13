@@ -4,7 +4,9 @@ import './SelectVehicleCss.css';
 import CarImage from '../Images/Cutomer/VehicleCategories/Car.svg';
 import BikeImage from '../Images/Cutomer/VehicleCategories/Bike.svg';
 import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg'; 
-import ParkingContext from '../../../context/ParkingContext';
+// import ParkingContext from '../../../context/ParkingContext';
+import { ParkingContext } from '../../../context/PakingContext';
+
 
 
 // export default function SelectVehicle({ onCategorySelect }) {

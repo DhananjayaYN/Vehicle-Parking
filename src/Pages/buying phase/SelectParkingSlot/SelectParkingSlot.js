@@ -2,11 +2,16 @@ import React, { useState, useEffect , useRef, useContext} from 'react';
 
 // import Select from 'react-select';
 import { ReactSVG } from 'react-svg'; 
+import Cart from './Cart/Cart';
 import './SelectParkingSlot.css';
 import './RightSideButtons';
 // import { useParkingContext } from '../../../hooks/useParkingContext';
 // import ParkingContext from '../../../context/ParkingContext';
-// import ParkingContext from '../../../context/ParkingContext';
+// import {ParkingContext} from '../../../context/ParkingContext';
+// import { ParkingContextProvider } from '../../../context/ParkingContext';
+import ParkingContext from '../../../context/PakingContext';
+
+
 // import CustomSelect from './CustomSelect'; 
 import { ReactComponent as CarIcon } from '../Images/Cutomer/VehicleCategories/Car.svg';
 import { ReactComponent as ArrowDownIcon } from '../../../Images/Cutomer/FilterBar/arrow_down.svg'
@@ -25,6 +30,8 @@ import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg';
 
   const { selectedCategory, setSelectedCategory } = useContext(ParkingContext);
   const [parkings, setParkings] = useState(null)
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  
 
   // useEffect(() => {
   //   const fetchParkings = async () => {
@@ -66,6 +73,14 @@ import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg';
     setSelectedCategory(type);
   };
 
+  const handleCartClick = () => {
+    setIsCartOpen(true);
+  };
+
+  const handleCloseCart = () => {
+    setIsCartOpen(false);
+  };
+
   const vehicleIcons = {
     Car: <CarIcon />,
     Bike: <BikeIcon />,
@@ -105,23 +120,16 @@ import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg';
       </div>
       <div className="checkout-wrapper">
       <div className="checkout-section">
-        <button className='cart-button'>
+        <button className='cart-button' onClick={handleCartClick}>
           <ReactSVG src={cartIcon} className="cart-icon" />
           Cart
         </button>
         <button className='continue-button'>Continue</button>
       </div>
       </div>
-      {/* <div className="slotsGrid">
-        {slots.map((slot) => (
-          <div key={slot} className="parkingSlot">
-            <div className="slotImage">
-              <img src="/path-to-car-image.svg" alt="car" />
-            </div>
-            <div className="slotNumber">{slot}</div>
-          </div>
-        ))}
-      </div> */}
+      
+      {isCartOpen && <Cart onClose={handleCloseCart} />}
+   
     </div>
   );
 }
