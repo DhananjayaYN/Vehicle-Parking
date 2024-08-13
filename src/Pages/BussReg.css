@@ -91,9 +91,11 @@
 }
 
 .card11 {
+    position: relative;
+    top: 5%;
     width: 70%;
     z-index: 12;
-    height: 100%;
+    height: 95%;
     align-items: center;
     display: flex;
     align-items: center;
@@ -109,20 +111,91 @@
 }
 
 .frame11 {
+
     border: 2px solid rgb(164, 217, 207);
     width: 98%;
-    height: 97%;
+    height: 110%;
     z-index: 500;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
+
 }
 
-.frame11_body {
-    font-size: x-large;
+.frame11 p {
+    text-indent: 2%;
+    width: 170%;
+    /* border: 2px solid red; */
 }
+
+.input1 {
+    position: relative;
+    left: 10%;
+}
+
+.input1 input {
+    width: 60%;
+}
+
+.input2 {
+    position: relative;
+    left: 15%;
+}
+
+.input2 input {
+    width: 60%;
+}
+
+.input3 {
+    position: relative;
+    left: 21%;
+}
+
+.iconimage1 {
+    position: relative;
+    left: 20%;
+}
+
+.input3 input {
+    width: 56%;
+}
+
+.input4 {
+    position: relative;
+    left: 12.5%;
+}
+
+.iconimage2 {
+    position: relative;
+    left: 11.5%;
+}
+
+.input4 input {
+    width: 30%;
+}
+
+.btn {
+    position: relative;
+    left: 15%;
+}
+
+
+.frame11_body .frame11_body_contnts {
+    font-size: 90%;
+}
+
+.button11 {
+    position: relative;
+    left: 80%;
+
+}
+
+.p1 {
+    text-indent: 2%;
+}
+
 
 .frame12 {
     border: 2px solid rgb(164, 217, 207);
@@ -139,10 +212,12 @@
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.frame12 img {
 
-    width: 80%;
+
+.image1 {
+    width: 50%;
     height: 80%;
+    border-radius: 50%;
 }
 
 .card2 {
@@ -179,7 +254,7 @@
 }
 
 .frame21_body {
-    font-size: large;
+    font-size: 90%;
 }
 
 .card22 {
@@ -202,7 +277,7 @@
 }
 
 .frame22_body {
-    font-size: small;
+    font-size: 90%;
 }
 
 .rectragle {
@@ -222,4 +297,15 @@
     width: 48%;
     opacity: 0.1;
 
+}
+
+@media (max-width:999px) {
+    body {
+        font-size: 80%;
+        color: blue;
+    }
+
+    .frame11_body {
+        font-size: 80%;
+    }
 }
