@@ -1,8 +1,16 @@
 .Home {
     width: 100%;
-    height: 100vh;
+    height: 122vh;
     display: grid;
     grid-template-rows: 94% 6%;
+}
+
+body:hover {
+    cursor: default;
+}
+
+input:hover {
+    cursor: default;
 }
 
 .main_box {
@@ -235,8 +243,10 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: left;
+    justify-content: left;
+    position: relative;
+    left: 0.5%;
 
 }
 
@@ -247,14 +257,106 @@
     z-index: 500;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: left;
+    justify-content: left;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
 }
 
 .frame21_body {
     font-size: 90%;
+}
+
+.frame21_body_01 p {
+    text-indent: 2%;
+    /* border: 2px solid red; */
+}
+
+.input5 {
+    position: relative;
+    left: 16%;
+
+}
+
+.input5 input {
+    width: 60%;
+}
+
+.vehicle_type {
+    position: relative;
+    left: 13%;
+}
+
+.showThreeWheel {
+    position: relative;
+    left: 25%;
+}
+
+.showBike {
+    position: relative;
+    left: 18%;
+}
+
+.showCar {
+    position: relative;
+    left: 11%;
+}
+
+.input6 input {
+    width: 8%;
+    position: relative;
+    left: 26%;
+}
+
+.input7 input {
+    width: 8%;
+    position: relative;
+    left: 30%;
+}
+
+.input8 input {
+    width: 8%;
+    position: relative;
+    left: 34%;
+}
+
+.bank {
+    position: relative;
+    left: 21%;
+}
+
+.branch {
+    position: relative;
+    left: 19%;
+}
+
+.input9 {
+    position: relative;
+    left: 20.5%;
+}
+
+.input9 input {
+    width: 64%;
+}
+
+.input10 {
+    position: relative;
+    left: 9%;
+}
+
+.input10 input {
+    width: 64%;
+}
+
+.Updatebtn {
+    position: relative;
+    left: 45%;
+}
+
+.CreateMyParkingSpacebtn button {
+    position: relative;
+    width: 96%;
+    left: 1%;
 }
 
 .card22 {
@@ -278,6 +380,29 @@
 
 .frame22_body {
     font-size: 90%;
+    position: relative;
+    left: 2%;
+}
+
+.Intext {
+    position: relative;
+    left: 60%;
+}
+
+.input11 input {
+    width: 30%;
+}
+
+.input12 input {
+    width: 30%;
+}
+
+.input13 input {
+    width: 30%;
+}
+
+.input14 input {
+    width: 30%;
 }
 
 .rectragle {
@@ -298,6 +423,7 @@
     opacity: 0.1;
 
 }
+
 
 @media (max-width:999px) {
     body {
