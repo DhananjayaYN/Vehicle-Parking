@@ -5,6 +5,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import HomeCustomer from "./Pages/HomeCustomer";
+import Places_card from "./Components/Places_card";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<HomePage/>}></Route>
           <Route path="/customer" element={<HomeCustomer/>}></Route>
+          <Route path="/card" element={<Places_card/>}></Route>
         </Routes>
       </BrowserRouter>
       

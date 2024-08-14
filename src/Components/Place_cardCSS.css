@@ -1,0 +1,41 @@
+.items {
+    width: 70%;
+    margin: auto;
+}
+
+.slick-slide > div{
+    padding: 0  15% ; /* Padding around each slide (for get the space between each cards*/
+}
+
+.card{
+    background: radial-gradient(rgba(154, 200, 205, 1), rgba(255, 255, 255, 1));
+    padding: 0;
+    margin: 5% 10% 15% 0;
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px ;
+    text-align: center;
+}
+
+.card_item{
+    display: grid;
+    grid-template-rows: 35% 45% 20%;
+    padding: 0;
+    margin: 0;
+    height: 110px;
+    
+}
+
+.card_top{
+    margin: 0;
+    padding: 0;
+}
+
+.card_middle{
+    margin: 0;
+    padding: 0;
+}
+
+.card_bottom{
+    margin: 0;
+    padding: 0;
+}
