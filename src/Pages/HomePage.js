@@ -65,8 +65,8 @@ export default function HomePage() {
     }
 
   return (
-    <div class='Home'>
-        <div class='main_box'>
+    <div className='Home'>
+        <div className='main_box'>
 
             {/*--------------------responsive side bar-------------------------*/}
             <div className="sidebar_mobile">
