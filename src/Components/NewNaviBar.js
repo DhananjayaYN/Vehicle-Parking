@@ -1,10 +1,12 @@
-import React from "react";
-import "./NewNaviBar.css"
+import React, { useState } from "react";
+import "./NewNaviBar.css";
+import HeaderNaviBarDropdown from "./HeaderNaviBarDropdown";
 const NewNaviBar = () => {
+    const [hide, sethide] = useState(false);
     return (
         <div className="box">
             <div className="tabBox">
-                <div className="tab">Hi Nimnatha</div>
+                <div className="tab" onClick={() => { sethide(!hide) }}>Hi Nimnatha</div>
             </div>
             <div className="tabBox">
                 <div className="tab">Parking Place</div>
@@ -18,8 +20,9 @@ const NewNaviBar = () => {
             <div className="tabBox">
                 <div className="tab">Home</div>
             </div>
-
+            {hide && <span className="show"><HeaderNaviBarDropdown /></span>}
         </div>
+
     );
 }
 export default NewNaviBar;
