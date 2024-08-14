@@ -136,12 +136,12 @@ const BussReg = () => {
                                 <div className='card22'>
                                     <div className='frame22'>
                                         <div className='frame22_body' style={{ alignSelf: 'center', }}>
-                                            One Galle Face<br /><br />
-                                            Parking  History <br /><br />
+                                            <span style={{ fontSize: 30, fontWeight: 'bolder' }}>One Galle Face</span><br /><br />
+                                            <span style={{ fontSize: 20, fontWeight: 'bolder' }}>Parking  History</span><br /><br />
                                             <span>Date:</span><span className='Intext'>In:</span><br />
                                             <p><span className='input11'><input type='text' /></span><span className='input12'><input type='text' /></span></p>
-                                            <button>View</button><br />
-                                            Earnings <br />
+                                            <button>View</button><br /><br />
+                                            <span style={{ fontSize: 20, fontWeight: 'bolder' }}>Earnings</span> <br /><br />
                                             <span>Date:</span><span className='Intext'>In:</span><br />
                                             <p><span className='input13'><input type='text' /></span><span className='input14'><input type='text' /></span></p>
                                             <button>View</button><br />
