@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import HomeCustomer from "./Pages/HomeCustomer";
 import Places_card from "./Components/Places_card";
+import BussReg from "./Pages/BussReg";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/" element={<HomePage/>}></Route>
           <Route path="/customer" element={<HomeCustomer/>}></Route>
           <Route path="/card" element={<Places_card/>}></Route>
+          <Route path="/owner" element={<BussReg/>}></Route>
         </Routes>
       </BrowserRouter>
       
