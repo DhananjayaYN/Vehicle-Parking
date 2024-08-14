@@ -1,0 +1,447 @@
+.Home {
+    width: 100%;
+    height: 122vh;
+    display: grid;
+    grid-template-rows: 94% 6%;
+}
+
+body:hover {
+    cursor: default;
+}
+
+input:hover {
+    cursor: default;
+}
+
+.main_box {
+    display: grid;
+    grid-template-columns: 25% 75%;
+
+}
+
+.sidebar_box {
+    background-color: rgba(15, 82, 69, 1);
+}
+
+.logo_body {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+.logo {
+    width: 30%;
+    height: 30%;
+
+
+}
+
+.searchbody {
+    width: 100%;
+    height: 10%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.searchbody input {
+    border-radius: 6px;
+    width: 80%;
+    height: 40%;
+}
+
+.place_card {
+    width: 99%;
+    height: 40%;
+    border: 2px solid red;
+    background-color: blue;
+    margin-bottom: 3%;
+}
+
+.My_Planes_Side {
+    width: 99%;
+    height: 30%;
+    border: 2px solid red;
+    background-color: blue;
+}
+
+.rightside_box {
+    display: grid;
+    grid-template-rows: 12% 88%;
+}
+
+.container {
+    background-color: white;
+    position: relative;
+}
+
+.containerBody {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+.navibar_box {
+    width: 100%;
+    margin-top: 1%;
+}
+
+.card1 {
+
+    width: 100%;
+    z-index: 11;
+    height: 40%;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.card11 {
+    position: relative;
+    top: 5%;
+    width: 70%;
+    z-index: 12;
+    height: 95%;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card12 {
+    width: 30%;
+    z-index: 12;
+    height: 100%;
+    align-content: center;
+
+}
+
+.frame11 {
+
+    border: 2px solid rgb(164, 217, 207);
+    width: 98%;
+    height: 110%;
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+
+}
+
+.frame11 p {
+    text-indent: 2%;
+    width: 170%;
+    /* border: 2px solid red; */
+}
+
+.input1 {
+    position: relative;
+    left: 10%;
+}
+
+.input1 input {
+    width: 60%;
+}
+
+.input2 {
+    position: relative;
+    left: 15%;
+}
+
+.input2 input {
+    width: 60%;
+}
+
+.input3 {
+    position: relative;
+    left: 21%;
+}
+
+.iconimage1 {
+    position: relative;
+    left: 20%;
+}
+
+.input3 input {
+    width: 56%;
+}
+
+.input4 {
+    position: relative;
+    left: 12.5%;
+}
+
+.iconimage2 {
+    position: relative;
+    left: 11.5%;
+}
+
+.input4 input {
+    width: 30%;
+}
+
+.btn {
+    position: relative;
+    left: 15%;
+}
+
+
+.frame11_body .frame11_body_contnts {
+    font-size: 90%;
+}
+
+.button11 {
+    position: relative;
+    left: 80%;
+
+}
+
+.p1 {
+    text-indent: 2%;
+}
+
+
+.frame12 {
+    border: 2px solid rgb(164, 217, 207);
+    width: 96%;
+    height: 96%;
+    z-index: 500;
+    position: relative;
+    left: 2%;
+    border-radius: 30px 0 0 0;
+    background-color: rgb(19, 166, 138);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+
+
+.image1 {
+    width: 50%;
+    height: 80%;
+    border-radius: 50%;
+}
+
+.card2 {
+    width: 100%;
+    height: 100%;
+    z-index: 11;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.card21 {
+    width: 70%;
+    z-index: 12;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    position: relative;
+    left: 0.5%;
+
+}
+
+.frame21 {
+    border: 2px solid rgb(164, 217, 207);
+    width: 98%;
+    height: 80%;
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.frame21_body {
+    font-size: 90%;
+}
+
+.frame21_body_01 p {
+    text-indent: 2%;
+    /* border: 2px solid red; */
+}
+
+.input5 {
+    position: relative;
+    left: 16%;
+
+}
+
+.input5 input {
+    width: 60%;
+}
+
+.vehicle_type {
+    position: relative;
+    left: 13%;
+}
+
+.showThreeWheel {
+    position: relative;
+    left: 25%;
+}
+
+.showBike {
+    position: relative;
+    left: 18%;
+}
+
+.showCar {
+    position: relative;
+    left: 11%;
+}
+
+.input6 input {
+    width: 8%;
+    position: relative;
+    left: 26%;
+}
+
+.input7 input {
+    width: 8%;
+    position: relative;
+    left: 30%;
+}
+
+.input8 input {
+    width: 8%;
+    position: relative;
+    left: 34%;
+}
+
+.bank {
+    position: relative;
+    left: 21%;
+}
+
+.branch {
+    position: relative;
+    left: 19%;
+}
+
+.input9 {
+    position: relative;
+    left: 20.5%;
+}
+
+.input9 input {
+    width: 64%;
+}
+
+.input10 {
+    position: relative;
+    left: 9%;
+}
+
+.input10 input {
+    width: 64%;
+}
+
+.Updatebtn {
+    position: relative;
+    left: 45%;
+}
+
+.CreateMyParkingSpacebtn button {
+    position: relative;
+    width: 96%;
+    left: 1%;
+}
+
+.card22 {
+    width: 30%;
+    z-index: 12;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+}
+
+.frame22 {
+    width: 90%;
+    height: 90%;
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.frame22_body {
+    font-size: 90%;
+    position: relative;
+    left: 10%;
+}
+
+.Intext {
+    position: relative;
+    left: 40%;
+}
+
+.input11 input {
+    width: 30%;
+}
+
+.input12 input {
+    width: 30%;
+}
+
+.input13 input {
+    width: 30%;
+}
+
+.input14 input {
+    width: 30%;
+}
+
+.input12 input {
+    position: relative;
+    left: 20%;
+}
+
+.input14 input {
+    position: relative;
+    left: 20%;
+}
+
+.rectragle {
+    width: 100%;
+    height: 40%;
+    background-color: rgba(164, 217, 207, 1);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+}
+
+.water_mark {
+    position: absolute;
+    left: 25%;
+    bottom: 0;
+    width: 48%;
+    opacity: 0.1;
+
+}
+
+
+@media (max-width:999px) {
+    body {
+        font-size: 80%;
+        color: blue;
+    }
+
+    .frame11_body {
+        font-size: 80%;
+    }
+}
