@@ -1,14 +1,12 @@
 import React from 'react';
-import './LoginCSS.css';
+import './UserCSS.css';
 import logo from '../Images/inner logo.svg';
-import home_img from '../Images/Home image.svg';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-
-export default function Login() {
+export default function UserSignup() {
   return (
-    <div className="login-container">
-      <div className="login-left">
+    <div className="u-container">
+      <div className="u-left">
         <div className="content">
           <img src={logo} alt="Logo" className="logo" />
           <h2>What You <span>Gain</span></h2>
@@ -20,11 +18,11 @@ export default function Login() {
           </ul>
         </div>
       </div>
-      <div className="login-right">
-        <div className="login-form">
-          <h1>Log In</h1>
-          <p className="signup-text">
-            Don't have an account? <a href="#">Sign up</a>
+      <div className="s-right">
+        <div className="s-form">
+          <h1>Sign Up</h1>
+          <p className="u-text">
+            Already have an account? <a href="/userLogin">Log In</a>
           </p>
           <div className="social-login">
             <button className="social-button google">
@@ -43,11 +41,14 @@ export default function Login() {
 
           <p className="or-divider">OR</p>
           <form>
-            <input type="email" placeholder="email" className="input-field" />
-            <input type="password" placeholder="password" className="input-field" />
+            <input type="text" placeholder="First Name" className="input-field" />
+            <input type="text" placeholder="Last Name" className="input-field" />
+            <input type="email" placeholder="Email" className="input-field" />
+            <input type="password" placeholder="Password" className="input-field" />
             <div className="form-actions">
-              <a href="#" className="forgot-password">Forgot Password?</a>
-              <button type="submit" className="login-button">Login</button>
+              <p>By signing up you agree to uor<a href="#" className="forgot-password">Terms of Service</a>
+              and<a href="#" className="forgot-password"> Privacy Policy</a></p>
+              <button type="submit" className="u-button">Sign Up</button>
             </div>
           </form>
         </div>

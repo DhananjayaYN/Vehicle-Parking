@@ -5,7 +5,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import HomeCustomer from "./Pages/HomeCustomer";
-import Login from "./Pages/Login";
+import UserLogin from "./Pages/UserLogin";
+import OwnerLogin from "./Pages/OwnerLogin";
+import UserSignup from "./Pages/UserSignup";
+import OwnerSignup from "./Pages/OwnerSignup";
+
 
 function App() {
   return (
@@ -14,7 +18,10 @@ function App() {
         <Routes>
           <Route exact path="/" element={<HomePage/>}></Route>
           <Route path="/customer" element={<HomeCustomer/>}></Route>
-          <Route path="/login" element={<Login/>}></Route>
+          <Route path="/userLogin" element={<UserLogin/>}></Route>
+          <Route path="/ownerLogin" element={<OwnerLogin/>}></Route>
+          <Route path="/userSignup" element={<UserSignup/>}></Route>
+          <Route path="/ownerSignup" element={<OwnerSignup/>}></Route>
         </Routes>
       </BrowserRouter>
       
