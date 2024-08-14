@@ -10,7 +10,8 @@ import Phone_Icon from '../Images/Phone_Icon.svg';
 import Car_Icon from '../Images/Car_Icon.svg';
 import Bike_Icon from '../Images/Bike_Icon.svg';
 import Three_wheel_Icon from '../Images/Three_wheel_Icon.svg';
-import bin_Icon from '../Images/bin_Icon.svg'
+import bin_Icon from '../Images/bin_Icon.svg';
+import HeaderNaviBarDropdown from '../Components/HeaderNaviBarDropdown';
 
 const BussReg = () => {
     const [searchValue, setSearchValue] = useState();
@@ -102,6 +103,7 @@ const BussReg = () => {
                                 </div>
                                 <div className='card12'>
                                     <div className='frame12'>
+
                                         {image ? <img src={URL.createObjectURL(image)} onClick={() => { inputRef.current.click(); }} className='image1' /> : <img src={V} onClick={() => { inputRef.current.click(); }} className='image1' />}
                                         <input type='file' ref={inputRef} onChange={changeimage} style={{ display: "none" }} />
                                     </div>
