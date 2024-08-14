@@ -4,6 +4,16 @@
 
 }
 
+.show {
+    z-index: 1000000000;
+    position: absolute;
+    right: 1%;
+    top: 9%;
+    background-color: #F2F2F2;
+    padding: 1%;
+
+}
+
 .tabBox {
     display: flex;
     flex-direction: row-reverse;
