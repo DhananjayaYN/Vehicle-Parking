@@ -381,12 +381,12 @@ input:hover {
 .frame22_body {
     font-size: 90%;
     position: relative;
-    left: 2%;
+    left: 10%;
 }
 
 .Intext {
     position: relative;
-    left: 60%;
+    left: 40%;
 }
 
 .input11 input {
@@ -403,6 +403,16 @@ input:hover {
 
 .input14 input {
     width: 30%;
+}
+
+.input12 input {
+    position: relative;
+    left: 20%;
+}
+
+.input14 input {
+    position: relative;
+    left: 20%;
 }
 
 .rectragle {
