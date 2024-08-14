@@ -34,9 +34,9 @@ export default function Places_card() {
         {cardData.map((card) => (
           <div className="card" key={card.id}>
             <div className='card_item'>
-                <div className='card_top'>er<br/>sdh<br/>hsd</div>
-                <div className='card_middle'>dsd</div>
-                <div className='card_bottom'>sdf</div>
+                <div className='card_top'>Lorem</div>
+                <div className='card_middle'>Lorem</div>
+                <div className='card_bottom'>Lorem</div>
             </div>
           </div>
         ))}

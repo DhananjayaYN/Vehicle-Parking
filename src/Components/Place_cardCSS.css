@@ -14,7 +14,6 @@
     border-radius: 8px;
     box-shadow: 5px 5px 10px ;
     text-align: center;
-    
 }
 
 .card_item{
@@ -22,24 +21,21 @@
     grid-template-rows: 35% 45% 20%;
     padding: 0;
     margin: 0;
-    height: 100%;
+    height: 110px;
     
 }
 
 .card_top{
-    background-color: blue;
     margin: 0;
     padding: 0;
 }
 
 .card_middle{
-    background-color: rgb(220, 22, 85);
     margin: 0;
     padding: 0;
 }
 
 .card_bottom{
-    background-color: rgb(16, 142, 39);
     margin: 0;
     padding: 0;
 }
