@@ -66,11 +66,8 @@
 
 /* Right side container */
 .login-right {
-    /* width: 40%; */
-    display: grid;
     flex: 1;
     margin: 50px;
-    align-items: flex-end;
 }
 
 /* Login form container */
