@@ -11,8 +11,6 @@ import map from '../Images/map.svg'
 import list from '../Images/list.svg'
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import Toggle_button from '../Components/Toggle_button';
-import { HiChevronDoubleRight } from "react-icons/hi";
-import { HiChevronDoubleLeft } from "react-icons/hi";
 import Card_list from '../Components/Places_card';
 
 
