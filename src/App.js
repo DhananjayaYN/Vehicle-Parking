@@ -7,6 +7,7 @@ import HomePage from "./Pages/HomePage";
 import HomeCustomer from "./Pages/HomeCustomer";
 import Places_card from "./Components/Places_card";
 import BussReg from "./Pages/BussReg";
+import LoginPage from "./Pages/Login";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/customer" element={<HomeCustomer/>}></Route>
           <Route path="/card" element={<Places_card/>}></Route>
           <Route path="/owner" element={<BussReg/>}></Route>
+          <Route path="/login" element={<LoginPage/>}></Route>
         </Routes>
       </BrowserRouter>
       
