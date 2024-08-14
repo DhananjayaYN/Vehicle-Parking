@@ -26,7 +26,12 @@ const bookingSchema = new Schema({
         type: Date, 
         default: Date.now 
     },
-  }, { timestamps: true });
+    status: { 
+        type: String, 
+        enum: ['Booked', 'Cancelled', 'Completed'],
+        default: 'Booked'  // e.g., "Booked", "Cancelled", "Completed"
+    }
+}, { timestamps: true });
   
   const Booking = mongoose.model('Booking', bookingSchema);
   module.exports = Booking;

@@ -96,6 +96,7 @@ const ParkingGrid = ({ parkings }) => {
           <p>Start Time: {selectedSlot.start_time}</p>
           <p>End Time: {selectedSlot.end_time}</p>
           <p>Availability: {selectedSlot.availability ? 'Available' : 'Not Available'}</p>
+          <button>Add to Cart</button>
         </div>
       )}
     </div>

@@ -14,6 +14,10 @@ const customerSchema = new Schema({
         type: String,
         require: true,
         unique: true
+    },
+    bookings: {
+        type: Schema.Types.ObjectId,
+        ref: 'Booking'
     }
   }, { timestamps: true });
   

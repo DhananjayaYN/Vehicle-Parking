@@ -17,7 +17,10 @@ const slotSchema = new Schema({
         ],
         required: true
     },
-    availability: { type: Boolean, default: true },
+    availability: { 
+        type: Boolean, 
+        default: true // whether the slot is available or not
+    },
 
 })
 
@@ -30,6 +33,11 @@ const levelSchema = new Schema({
 })
 
 const parkingSchema = new Schema({
+    owner_id: {
+        type: Schema.Types.ObjectId,
+        ref: 'Owner',
+        required: true
+    },
     name: {
         type: String,
         required: true
