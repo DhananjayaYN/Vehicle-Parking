@@ -9,7 +9,6 @@ import UserLogin from "./Pages/UserLogin";
 import OwnerLogin from "./Pages/OwnerLogin";
 import UserSignup from "./Pages/UserSignup";
 import OwnerSignup from "./Pages/OwnerSignup";
-import cParkingSpace from "./Pages/cParkingSpace";
 
 
 function App() {
@@ -23,7 +22,6 @@ function App() {
           <Route path="/ownerLogin" element={<OwnerLogin/>}></Route>
           <Route path="/userSignup" element={<UserSignup/>}></Route>
           <Route path="/ownerSignup" element={<OwnerSignup/>}></Route>
-          <Route path="/cParkingSpace" element={<cParkingSpace/>}></Route>
         </Routes>
       </BrowserRouter>
       
