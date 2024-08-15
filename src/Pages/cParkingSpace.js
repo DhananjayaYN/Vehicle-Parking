@@ -1,65 +1,9 @@
-import React, { useState, useRef } from 'react';
-import "./cParkingSpace.css";
-import Footer from '../Components/Footer';
+import React from 'react';
+import './UserCSS.css';
+import './OwnerCSS.css';
 import logo from '../Images/inner logo.svg';
-import watermark from '../Images/hidden logo.svg';
-import NewNaviBar from '../Components/NewNaviBar';
-import V from '../Images/V.svg';
-import emailIcon from '../Images/email_Icon.svg';
-import Phone_Icon from '../Images/Phone_Icon.svg';
-import Car_Icon from '../Images/Car_Icon.svg';
-import Bike_Icon from '../Images/Bike_Icon.svg';
-import Three_wheel_Icon from '../Images/Three_wheel_Icon.svg';
-import bin_Icon from '../Images/bin_Icon.svg';
-import HeaderNaviBarDropdown from '../Components/HeaderNaviBarDropdown';
 
-
-const BussReg = () => {
-    const [searchValue, setSearchValue] = useState();
-
-    //Icons
-    const [selectvalue, setselectvalue] = useState();
-    const [showCar, setshowCar] = useState(true);
-    const chngecarvalue = () => {
-        setshowCar(true);
-        setselectvalue("");
-    }
-    const chngecarvalue2 = () => {
-        setshowCar(false);
-    }
-
-    const [showBike, setshowBike] = useState(true);
-    const chngebikevalue = () => {
-        setshowBike(true);
-        setselectvalue("");
-    }
-    const chngebikevalue2 = () => {
-        setshowBike(false);
-    }
-    const [showThreeWheel, setshowThreeWheel] = useState(true);
-    const chngethreewheelvalue = () => {
-        setshowThreeWheel(true);
-        setselectvalue("");
-    }
-    const chngethreewheelvalue2 = () => {
-        setshowThreeWheel(false);
-    }
-
-    //bank
-    const [bank, setbank] = useState();
-
-    //branch
-    const [branch, setbranch] = useState();
-
-    //image
-    const [image, setImage] = useState();
-    const inputRef = useRef(null);
-    const changeimage = (e) => {
-        setImage(e.target.files[0]);
-
-    }
-
-
+export default function cParkingSpace(){
     return (
         <div className='Home'>
             <div className='main_box'>
@@ -162,4 +106,3 @@ const BussReg = () => {
         </div>
     )
 }
-export default cParkingSpace();
