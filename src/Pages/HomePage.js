@@ -129,13 +129,13 @@ export default function HomePage() {
                     Say goodbye to parking hassles and hello to seamless parking experiences. Your spot awaits!
                     </p>
                     <div class='rectragle'></div>
-                    <img src={watermark} alt='Logo' class='water_mark'/>
+                    <img src={watermark} alt='Logo' class='H_water_mark'/>
                     <div class='triangle'></div>
                     <img src={home_img} alt='Home_image' class='home_image'/>
                 </div>
             </div>
         </div>
-        <div class='footer_box'>
+        <div class='H_footer_box'>
             <Footer/>
         </div>
     </div>
