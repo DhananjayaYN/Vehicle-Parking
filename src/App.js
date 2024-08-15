@@ -8,6 +8,7 @@ import HomeCustomer from "./Pages/HomeCustomer";
 import Places_card from "./Components/Places_card";
 import BussReg from "./Pages/BussReg";
 import LoginPage from "./Pages/Login";
+import CustomerPage from './Pages/CustomerPage'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/card" element={<Places_card/>}></Route>
           <Route path="/owner" element={<BussReg/>}></Route>
           <Route path="/login" element={<LoginPage/>}></Route>
+          <Route path="/customer/select-vehicle" element={<CustomerPage/>}></Route>
         </Routes>
       </BrowserRouter>
       
