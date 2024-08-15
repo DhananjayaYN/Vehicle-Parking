@@ -15,7 +15,7 @@
     background-color: rgba(19, 166, 138, 1);
     align-items: center;
     display: grid;
-    grid-template-rows: 20% 15% 30% 35%;
+    grid-template-rows: 20% 15% 15% 15% 35%;
     z-index: 0;
 }
 
@@ -61,16 +61,18 @@
 .C_profile{
     width: 75%;
     height: 68%;
-    display: block;
+    
     margin: 0 auto;
     border-radius: 10%;
-    background-color: aqua;
+    background-color: rgb(32, 208, 85);
 }
 
-.C_
+.button-container{
+    background-color: blue;
+}
 
 .C_shop_view{
-    background-color: aqua;
+    background-color: rgb(255, 106, 0);
     display: block;
     margin: 0 auto;
     width: 70%;
