@@ -1,0 +1,77 @@
+.parking-container {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping to ensure horizontal scrolling */
+    gap: 100px; 
+    margin-left: 50px;
+    margin-right: 100px;
+}
+
+.parking-section {
+    justify-content: space-around;
+    padding: 0; 
+    margin: 0;  
+}
+.parking-section:last-child {
+    margin-right: 50px;
+}
+
+.slot-pair {
+    display: flex;
+    position: relative;
+}
+
+.slot-pair::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background-color: #000; 
+}
+
+.parking-slot {
+    width: 90px;
+    height: 55px;
+    border: 1px solid #000;
+    border-right: none;
+    border-left: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;  
+    box-sizing: border-box; 
+    cursor: pointer; /* Change cursor to pointer to indicate clickability */
+}
+
+.slots-grid {
+    gap: 0; 
+    padding: 0; 
+    margin: 0; 
+}
+
+.parking-wrapper {
+    flex: 1;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding-right: 100px;
+    position: relative; /* Ensure the wrapper is a positioned ancestor */
+}
+
+.whitespace {
+    width: 100px;
+    justify-content: space-around;
+    padding: 0; 
+    margin: 0;  
+}
+
+.slot-details {
+    position: absolute; /* Position absolute to move freely within the document */
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure the dialog box appears above other elements */
+    white-space: nowrap; /* Prevent text from wrapping */
+    min-width: 200px; /* Minimum width to ensure enough space for content */
+}

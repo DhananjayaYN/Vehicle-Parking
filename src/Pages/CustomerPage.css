@@ -1,0 +1,90 @@
+.Home{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 94% 6%;
+}
+
+.main_box{
+    display: grid;
+    grid-template-columns: 25% 75%;
+    
+}
+
+.sidebar_box{
+    background-color: rgba(15, 82, 69, 1);
+    align-items: center;
+    display: grid;
+    grid-template-rows: 20% 45% 35%;
+}
+
+.rightside_box{
+    display: grid;
+    grid-template-rows: 10% 90%;
+}
+
+.container{
+    background-color: white;
+    position: relative;
+}
+
+.logo{
+    height: 75%;
+    display: flex;
+    justify-self: center;
+}
+
+.Map{
+    height: 100%;
+    text-align: center;
+    
+}
+
+
+.search{
+    width: 50%;
+    height: 20px;
+    border-radius: 10px;
+    
+}
+
+.footer_box{
+    position: absolute;
+    bottom: 0   ;
+    right: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.container{
+    position: relative; /* Ensure the container is the reference point for absolute positioning */
+    width: 100%; /* Adjust as needed */
+    height: 100%; /* Adjust as needed */
+    /* overflow-y: hidden; */
+    /* overflow: hidden;  */
+}
+
+.content{
+    position: relative;
+    z-index: 100;
+}
+
+.rectangle{
+
+    width: 100%;
+    height: 45%;
+    background-color: rgba(164, 217, 207, 1);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.water_mark{
+    position: absolute;
+    left: 25%;
+    bottom: 20%;
+    width: 48%;
+    opacity: 0.2;
+}
+

@@ -1,0 +1,36 @@
+.item{
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    align-items: center;
+}
+
+.item .item-attribute{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ccc; 
+    border-radius: 5px;
+    padding: 10px 5px 10px 5px;
+    margin: 5px;
+
+}
+
+.item button{
+    background-color: #EC4747;
+    width: 42px;
+    height: 42px;
+    border: 1px solid #EC4747;
+    border-radius: 20%;
+}
+
+.item button svg{
+    fill: white;
+    width: 28px;    
+}
+
+.item button:hover{
+    background-color: #FF6B6B;
+    border: 1px solid #FF6B6B;
+}
