@@ -1,11 +1,12 @@
 import React from 'react';
+import './OwnerCSS.css';
 import './UserCSS.css';
-import logo from '../Images/inner logo.svg';
+import logo from '../../Images/inner logo.svg';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-export default function UserSignup() {
+export default function OwnerSignup() {
   return (
-    <div className="u-container">
+    <div className="o-container">
       <div className="u-left">
         <div className="content">
           <img src={logo} alt="Logo" className="logo" />
@@ -21,8 +22,8 @@ export default function UserSignup() {
       <div className="s-right">
         <div className="s-form">
           <h1>Sign Up</h1>
-          <p className="u-text">
-            Already have an account? <a href="/userLogin">Log In</a>
+          <p className="o-text">
+            Already have an account? <a href="/ownerLogin">Log In</a>
           </p>
           <div className="social-login">
             <button className="social-button google">
@@ -46,9 +47,9 @@ export default function UserSignup() {
             <input type="email" placeholder="Email" className="input-field" />
             <input type="password" placeholder="Password" className="input-field" />
             <div className="form-actions">
-              <p>By signing up you agree to uor<a href="#" className="forgot-password">Terms of Service</a>
-              and<a href="#" className="forgot-password"> Privacy Policy</a></p>
-              <button type="submit" className="u-button">Sign Up</button>
+              <p>By signing up you agree to uor<a href="#" className="oforgot-password">Terms of Service</a>
+              and<a href="#" className="oforgot-password"> Privacy Policy</a></p>
+              <button type="submit" className="o-button">Sign Up</button>
             </div>
           </form>
         </div>

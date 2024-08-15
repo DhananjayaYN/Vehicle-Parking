@@ -9,10 +9,11 @@ import HomeCustomer from "./Pages/HomeCustomer";
 //---------Nimantha--------
 import BussReg from "./Pages/BussReg";
 //---------Sahan------------
-import UserLogin from "./Pages/UserLogin";
-import OwnerLogin from "./Pages/OwnerLogin";
-import UserSignup from "./Pages/UserSignup";
-import OwnerSignup from "./Pages/OwnerSignup";
+import UserLogin from "./Pages/Login/UserLogin";
+import OwnerLogin from "./Pages/Login/OwnerLogin";
+import UserSignup from "./Pages/Login/UserSignup";
+import OwnerSignup from "./Pages/Login/OwnerSignup";
+import CParkingSpace from "./Pages/cParkingSpace";
 //---------Hansa------------
 import CustomerPage from './Pages/CustomerPage'
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/ownerLogin" element={<OwnerLogin/>}></Route>
           <Route path="/userSignup" element={<UserSignup/>}></Route>
           <Route path="/ownerSignup" element={<OwnerSignup/>}></Route>
+          <Route path="/cParkingSpace" element={<CParkingSpace/>}></Route> 
           <Route path="/customer/select-vehicle" element={<CustomerPage/>}></Route>
         </Routes>
       </BrowserRouter>

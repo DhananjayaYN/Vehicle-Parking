@@ -3,7 +3,7 @@
     display: flex;
     height: 100vh;
     background-color: #1a4d45;
-    background-image: url('../Images/Home image.svg'); /* Path to your image */
+    background-image: url('../../Images/Home image.svg'); /* Path to your image */
     background-size: 40%; /* Adjust size of the background image */
     background-repeat: no-repeat; /* Prevents the image from repeating */
     background-position: bottom; /* Positions the image */

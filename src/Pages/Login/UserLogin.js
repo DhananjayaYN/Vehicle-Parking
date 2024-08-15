@@ -1,12 +1,11 @@
 import React from 'react';
-import './OwnerCSS.css';
 import './UserCSS.css';
-import logo from '../Images/inner logo.svg';
+import logo from '../../Images/inner logo.svg';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-export default function OwnerLogin() {
+export default function UserLogin() {
   return (
-    <div className="o-container">
+    <div className="u-container">
       <div className="u-left">
         <div className="content">
           <img src={logo} alt="Logo" className="logo" />
@@ -22,8 +21,8 @@ export default function OwnerLogin() {
       <div className="u-right">
         <div className="u-form">
           <h1>Log In</h1>
-          <p className="o-text">
-            Don't have an account? <a href="/ownerSignup">Sign up</a>
+          <p className="u-text">
+            Don't have an account? <a href="/userSignup">Sign up</a>
           </p>
           <div className="social-login">
             <button className="social-button google">
@@ -45,8 +44,8 @@ export default function OwnerLogin() {
             <input type="email" placeholder="email" className="input-field" />
             <input type="password" placeholder="password" className="input-field" />
             <div className="form-actions">
-              <a href="#" className="oforgot-password">Forgot Password?</a>
-              <button type="submit" className="o-button">Login</button>
+              <a href="#" className="forgot-password">Forgot Password?</a>
+              <button type="submit" className="u-button">Login</button>
             </div>
           </form>
         </div>
