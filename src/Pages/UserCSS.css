@@ -1,5 +1,5 @@
 /* General container for the login page */
-.login-container {
+.u-container {
     display: flex;
     height: 100vh;
     background-color: #1a4d45;
@@ -11,12 +11,12 @@
     position: relative; /* Allows positioning of the content over the background */
 }
 
-.login-container div{
+.u-container div{
     width: auto;
 }
 
 /* Left side with background image */
-.login-left {
+.u-left {
     flex: 1;
     color: white;
     display: grid;
@@ -27,7 +27,7 @@
 
 
 /* Content over the background */
-.login-left .content {
+.u-left .content {
     padding: 50px;
     position: top left;
     z-index: 2; /* Ensures content is above the background image */
@@ -40,13 +40,13 @@
 }
 
 /* Header for the benefits */
-.login-left h2 {
+.u-left h2 {
     font-size: 36px;
     /* font-weight: bold; */
     margin-bottom: 30px;
 }
 
-.login-left h2 span{
+.u-left h2 span{
     color:#77b3aa;
 }
 
@@ -65,16 +65,19 @@
 }
 
 /* Right side container */
-.login-right {
-    /* width: 40%; */
-    display: grid;
+.u-right {
     flex: 1;
-    margin: 50px;
-    align-items: flex-end;
+    margin: 30px;
+}
+
+.s-right{
+    flex: 1;
+    margin: 30px;
+    margin-top: 1%;
 }
 
 /* Login form container */
-.login-form {
+.u-form {
     justify-content: center;
     background-color: white;
     padding: 50px;
@@ -85,22 +88,34 @@
     float: right;
 }
 
+.s-form {
+    justify-content: center;
+    background-color: white;
+    padding: 0px 50px 50px 50px;
+    width: 30%;
+    height: 95%;
+    border-radius: 10px;
+    max-width: 350px;
+    float: right;
+}
 /* Login form header */
-.login-form h1 {
+.u-form h1 {
     font-size: 28px;
     margin-bottom: 20px;
     color: #333;
 }
 
 /* Signup text above the social login buttons */
-.signup-text {
+.u-text {
     margin-bottom: 20px;
     font-size: 14px;
     color: #333;
     text-align: right;
+    font-weight: 500;
+    letter-spacing: 1px;
 }
 
-.signup-text a {
+.u-text a {
     color: #004c3f;
     text-decoration: none;
 }
@@ -158,11 +173,11 @@
 .or-divider {
     text-align: center;
     color: #888;
-    margin: 20px 0;
+    margin: 15px 0;
 }
 
 /* Form inputs */
-.input-field {
+.input-field{
     width: 95%;
     align-items: center;
     justify-content: center;
@@ -185,8 +200,12 @@
     text-decoration: none;
     font-size: 14px;
 }
+.form-actions p{
+    font-size: 14px;
+}
 
-.login-button {
+.u-button {
+    width:150px;
     padding: 10px 20px;
     background-color: #004c3f;
     color: white;

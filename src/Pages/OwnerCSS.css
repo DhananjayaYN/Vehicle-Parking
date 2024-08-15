@@ -1,0 +1,48 @@
+/* General container for the login page */
+.o-container {
+    display: flex;
+    height: 100vh;
+    background-color: #13A68A;
+    background-image: url('../Images/Home image.svg'); /* Path to your image */
+    background-size: 40%; /* Adjust size of the background image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: bottom; /* Positions the image */
+    background-position-x: 45%;
+    position: relative; /* Allows positioning of the content over the background */
+}
+
+.o-container div{
+    width: auto;
+}
+
+/* Signup text above the social login buttons */
+.o-text {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #333;
+    text-align: right;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.osignup-text a {
+    color: #13A68A;
+    text-decoration: none;
+}
+
+.oforgot-password {
+    color: #13A68A;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.o-button {
+    width:150px;
+    padding: 10px 20px;
+    background-color: #13A68A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
