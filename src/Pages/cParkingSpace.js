@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import "./BussReg.css";
+import "./cParkingSpace.css";
 import Footer from '../Components/Footer';
 import logo from '../Images/inner logo.svg';
 import watermark from '../Images/hidden logo.svg';
@@ -12,6 +12,7 @@ import Bike_Icon from '../Images/Bike_Icon.svg';
 import Three_wheel_Icon from '../Images/Three_wheel_Icon.svg';
 import bin_Icon from '../Images/bin_Icon.svg';
 import HeaderNaviBarDropdown from '../Components/HeaderNaviBarDropdown';
+
 
 const BussReg = () => {
     const [searchValue, setSearchValue] = useState();
@@ -161,4 +162,4 @@ const BussReg = () => {
         </div>
     )
 }
-export default BussReg;
+export default cParkingSpace();
