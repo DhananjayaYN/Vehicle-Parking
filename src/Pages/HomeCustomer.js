@@ -12,6 +12,8 @@ import list from '../Images/list.svg'
 
 import Toggle_button from '../Components/Toggle_button';
 
+import { FaCircleUser } from "react-icons/fa6";
+
 
 export default function HomeCustomer() {
 
@@ -68,14 +70,15 @@ export default function HomeCustomer() {
                     <div className='C_search_bar'>
                         <input type='text' placeholder="Search..." className='C_search'/>
                     </div>
-                    <p>Find Nearby Parking Location</p>
-                    <div className='C_profile'>
-                        
-                    </div>
-                    
                 </div>
-                <div className='C_start'>
-                        
+                <div className='C_profile'>
+                    <FaCircleUser />
+                    <button className='C_admin_button'>Owner Profile</button>
+                </div>
+                <div className="button-container">
+                    <div className="background-circle">
+                         <button className="start-button">Let's Get Start</button>
+                    </div>
                 </div>
                 <div className='C_shops'>
                     <div className='C_shop_view'>
