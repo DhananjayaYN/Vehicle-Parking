@@ -1,5 +1,5 @@
 import React from 'react';
-import './OwnerLoginCSS.css';
+import './OwnerCSS.css';
 import './UserCSS.css';
 import logo from '../Images/inner logo.svg';
 import '@fortawesome/fontawesome-free/css/all.min.css';
