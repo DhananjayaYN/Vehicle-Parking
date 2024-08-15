@@ -1,0 +1,156 @@
+from fastapi import FastAPI,HTTPException;
+from pymongo import MongoClient;
+from pydantic import BaseModel;
+from bson import ObjectId;
+
+app = FastAPI(title="Mr Park API using FastAPI")
+conn = MongoClient("mongodb+srv://hansaliviru:mrparkadminpwd@mrpark.juwa5qh.mongodb.net/")
+
+
+@app.get("/")
+def get_owner_all_data():
+    try:
+        data= [ {"_id":str(item["_id"]),"id":item["id"],"company_name":item["company_name"],"name":item["name"],"email":item["email"],"phone_number":item["phone_number"],"address":item["address"],"car":item["car"],"bike":item["bike"],"threewheel":item["threewheel"],"car_charging_fee":item["car_charging_fee"],"bike_charging_fee":item["bike_charging_fee"],"threewheel_charging_fee":item["threewheel_charging_fee"],"bank_details":item["bank_details"]}for item in conn.test.owner.find()]
+        if(data!=[]):
+            return data
+        else:
+            raise HTTPException(status_code=404, detail="Owner not found")
+    except HTTPException as e:
+        raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
+
+@app.get("/ownerAuthentication")
+def get_all_ownerAuthentication_accounts():
+    try:
+        data= [{"_id":str(item["_id"]),"email":item["email"],"password":item["password"]}for item in conn.test.ownerAuthentication.find()]
+        if(data!=[]):
+            return data
+        else:
+            raise HTTPException(status_code=404, detail="Owner not found")
+    except HTTPException as e:
+        raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
+    
+
+@app.get("/ownerAuthentication/{email}/{password}")
+def get_id_in_ownerAuthentication_account(email : str , password : str):
+    try:
+        data= [{"_id":str(item["_id"])}for item in conn.test.ownerAuthentication.find({"email":email,"password":password})]
+        if(data!=[]):
+            return data
+        else:
+            raise HTTPException(status_code=404, detail="Owner not found")
+    except HTTPException as e:
+        raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
+
+@app.get("/{id}")
+def get_owner(id : str):
+    try:
+        data= [ {"_id":str(item["_id"]),"id":item["id"],"company_name":item["company_name"],"name":item["name"],"email":item["email"],"phone_number":item["phone_number"],"address":item["address"],"car":item["car"],"bike":item["bike"],"threewheel":item["threewheel"],"car_charging_fee":item["car_charging_fee"],"bike_charging_fee":item["bike_charging_fee"],"threewheel_charging_fee":item["threewheel_charging_fee"],"bank_details":item["bank_details"]}for item in conn.test.owner.find({"id":id})]
+        if(data!=[]):
+            return data
+        else:
+            raise HTTPException(status_code=404, detail="Owner not found")
+    except HTTPException as e:
+        raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
+    
+@app.get("/company-details/{id}")
+def get_company_details(id : str):
+    try :
+        data= [{"company_name":item["company_name"],"address":item["address"],"phone_number":item["phone_number"],"email":item["email"]} for item in conn.test.owner.find({"id":id})]
+        if(data!=[]):
+            return data
+        else:
+            raise HTTPException(status_code=404, detail="Owner not found")
+    except HTTPException as e:
+        raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
+
+class Bank_details(BaseModel):
+    bank_name : str
+    branch_name : str
+    name : str
+    account_number : str
+
+
+class Owner(BaseModel):
+    id : str
+    company_name : str
+    name : str
+    email : str
+    phone_number : str
+    address : str
+    car : bool
+    bike : bool
+    threewheel : bool
+    car_charging_fee : int
+    bike_charging_fee : int
+    threewheel_charging_fee : int
+    bank_details : Bank_details
+
+@app.post("/",status_code=201)
+def insert_owner_data(owner : Owner):
+    try:
+        conn.test.owner.insert_one(owner.dict())
+        return {"DATA":"Success"}
+    except HTTPException as e:
+        raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
+
+@app.put("/{id}")
+def update_all__owner_data(id : str,owner : Owner):
+    try:
+       result= conn.test.owner.find_one_and_update({"id":id},{"$set": owner.dict()},return_document=True)
+       if(result):
+            return [ {"_id":str(item["_id"]),"id":item["id"],"company_name":item["company_name"],"name":item["name"],"email":item["email"],"phone_number":item["phone_number"],"address":item["address"],"car":item["car"],"bike":item["bike"],"threewheel":item["threewheel"],"car_charging_fee":item["car_charging_fee"],"bike_charging_fee":item["bike_charging_fee"],"threewheel_charging_fee":item["threewheel_charging_fee"],"bank_details":item["bank_details"]}for item in conn.test.owner.find()]
+       else:
+            raise HTTPException(status_code=404, detail="Owner not found")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
+
+
+class Above(BaseModel):
+    company_name : str
+    name : str
+    email : str
+    phone_number : str
+
+
+@app.put("/above/{id}")
+def update_above_data(id : str ,data : Above):
+    try:
+        result = conn.test.owner.find_one_and_update({"id":id},{"$set":data.dict()},return_document=True)
+        if(result):
+            return [ {"_id":str(item["_id"]),"id":item["id"],"company_name":item["company_name"],"name":item["name"],"email":item["email"],"phone_number":item["phone_number"],"address":item["address"],"car":item["car"],"bike":item["bike"],"threewheel":item["threewheel"],"car_charging_fee":item["car_charging_fee"],"bike_charging_fee":item["bike_charging_fee"],"threewheel_charging_fee":item["threewheel_charging_fee"],"bank_details":item["bank_details"]}for item in conn.test.owner.find()]
+        else:
+            raise HTTPException(status_code=404, detail="Owner not found")
+    except HTTPException as e:
+        raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
+
+
+class Below(BaseModel):
+    address : str
+    car : bool
+    bike : bool
+    threewheel : bool
+    car_charging_fee : int
+    bike_charging_fee : int
+    threewheel_charging_fee : int
+    bank_details : Bank_details
+
+@app.put("/below/{id}")
+def update_below_data(id : str ,data : Below):
+    try:
+        result = conn.test.owner.find_one_and_update({"id":id},{"$set":data.dict()},return_document=True)
+        if(result):
+           return [ {"_id":str(item["_id"]),"id":item["id"],"company_name":item["company_name"],"name":item["name"],"email":item["email"],"phone_number":item["phone_number"],"address":item["address"],"car":item["car"],"bike":item["bike"],"threewheel":item["threewheel"],"car_charging_fee":item["car_charging_fee"],"bike_charging_fee":item["bike_charging_fee"],"threewheel_charging_fee":item["threewheel_charging_fee"],"bank_details":item["bank_details"]}for item in conn.test.owner.find()]
+        else:
+            raise HTTPException(status_code=404, detail="Owner not found") 
+    except HTTPException as e:
+        raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
+
+@app.delete("/{id}")
+def delete_owner_data(id : str):
+    try:
+        conn.test.owner.delete_one({"id":id})
+        return {"DATA":"Success"}
+    except HTTPException as e:
+        raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
+    
+  
