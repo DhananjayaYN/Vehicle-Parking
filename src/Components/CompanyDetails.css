@@ -1,0 +1,43 @@
+.container {
+    width: 80%;
+    height: 100%;
+    background-color: rgb(164, 217, 207);
+    border-radius: 10px;
+}
+
+.card1 {
+    width: 100%;
+    height: 6%;
+}
+
+.card2 {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    background-color: rgb(217, 217, 217);
+    color: rgb(15, 82, 69);
+
+}
+
+.card3 {
+    width: 100%;
+    height: 80%;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    flex-direction: column;
+    color: rgb(15, 82, 69);
+}
+
+.text {
+    margin-top: 8%;
+    position: relative;
+    left: 2%;
+}
+
+.text2 span {
+    position: relative;
+    left: 4%;
+}
