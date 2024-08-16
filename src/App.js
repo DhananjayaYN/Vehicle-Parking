@@ -13,7 +13,7 @@ import UserLogin from "./Pages/Login/UserLogin";
 import OwnerLogin from "./Pages/Login/OwnerLogin";
 import UserSignup from "./Pages/Login/UserSignup";
 import OwnerSignup from "./Pages/Login/OwnerSignup";
-import CParkingSpace from "./Pages/cParkingSpace";
+import ParkingSpace from "./Pages/BusinessMode/ParkingSpace";
 //---------Hansa------------
 import CustomerPage from './Pages/CustomerPage'
 
@@ -29,7 +29,7 @@ function App() {
           <Route path="/ownerLogin" element={<OwnerLogin/>}></Route>
           <Route path="/userSignup" element={<UserSignup/>}></Route>
           <Route path="/ownerSignup" element={<OwnerSignup/>}></Route>
-          <Route path="/cParkingSpace" element={<CParkingSpace/>}></Route> 
+          <Route path="/ParkingSpace" element={<ParkingSpace/>}></Route> 
           <Route path="/customer/select-vehicle" element={<CustomerPage/>}></Route>
         </Routes>
       </BrowserRouter>

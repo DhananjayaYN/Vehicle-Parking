@@ -1,0 +1,172 @@
+.parking-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 20%;
+  background-color: #50b3a2;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo img {
+  width: 100px;
+}
+
+.search-location {
+  width: 100%;
+  padding: 10px;
+  margin: 20px 0;
+  border-radius: 5px;
+}
+
+.add-slots {
+  width: 100%;
+  background-color: #8ed1cd;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.section-name {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.slot-range {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.slot-range input {
+  flex: 1;
+}
+
+.range-value {
+  padding-left: 10px;
+}
+
+.add-slots-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #00695c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.main-content {
+  width: 80%;
+  padding: 20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.reservation-type select {
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.date-time input {
+  margin-left: 10px;
+  padding: 5px;
+}
+
+.parking-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+}
+
+.slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f4f4f4;
+}
+
+.car-icon {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.tooltip {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tooltip .booked {
+  color: red;
+}
+
+.tooltip .available {
+  color: green;
+}
+
+.emergency-button {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #e0f2f1;
+}
+
+.hotline {
+  font-size: 14px;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+}
+
+.social-icons img {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.footer-links {
+  display: flex;
+}
+
+.footer-links a {
+  margin-right: 10px;
+  color: #00695c;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.copyright {
+  font-size: 14px;
+}
