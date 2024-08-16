@@ -1,0 +1,29 @@
+.P_Container {
+    width: 80%;
+    height: 100%;
+    background-color: rgb(164, 217, 207);
+    border-radius: 10px;
+}
+
+.P_card1 {
+    width: 100%;
+    height: 6%;
+}
+
+.P_card2 {
+    width: 100%;
+    height: 10%;
+    background-color: rgb(217, 217, 217);
+    display: flex;
+    justify-content: center;
+    color: rgb(15, 82, 69);
+    font-weight: bolder;
+}
+
+.P_card3 {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
