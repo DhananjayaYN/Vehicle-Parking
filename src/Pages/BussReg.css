@@ -54,16 +54,17 @@ input:hover {
 .B_place_card {
     width: 99%;
     height: 40%;
-    border: 2px solid red;
-    background-color: blue;
     margin-bottom: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .B_My_Planes_Side {
+    display: flex;
+    justify-content: center;
     width: 99%;
-    height: 30%;
-    border: 2px solid red;
-    background-color: blue;
+    height: 35%;
 }
 
 .B_rightside_box {
