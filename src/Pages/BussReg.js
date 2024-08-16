@@ -12,7 +12,8 @@ import Bike_Icon from '../Images/Bike_Icon.svg';
 import Three_wheel_Icon from '../Images/Three_wheel_Icon.svg';
 import bin_Icon from '../Images/bin_Icon.svg';
 import HeaderNaviBarDropdown from '../Components/HeaderNaviBarDropdown';
-
+import CompanyDetails from '../Components/CompanyDetails';
+import Packages from '../Components/Packages';
 const BussReg = () => {
     const [searchValue, setSearchValue] = useState();
 
@@ -70,10 +71,11 @@ const BussReg = () => {
                         <input type='text' placeholder='Search location parking / Place' onChange={(e) => setSearchValue(e.target.value)} />
                     </div>
                     <div className='B_place_card'>
-                        {searchValue}
+                        <CompanyDetails company="One Galle Face Parking" address="WRHW+745, Unnamed Road" number="075 3846251" email="ogfparking@ogmail.com" />
                     </div>
                     <div className='B_My_Planes_Side'>
                         {searchValue}
+                        <Packages name="Packages" />
                     </div>
                 </div>
                 <div className='B_rightside_box'>
