@@ -1,17 +1,17 @@
 import React from 'react'
-import './FooterCSS.css';
-import Youtube from '../Images/Youtube.svg'
-import X from '../Images/X.svg'
-import Facebook from '../Images/Facebook.svg'
-import Instergram from '../Images/Instergram.svg'
+import './footer.css';
+import Youtube from '../img/Youtube.svg'
+import X from '../img/X.svg'
+import Facebook from '../img/Facebook.svg'
+import Instergram from '../img/Instergram.svg'
 
 export default function Footer() {
   return (
-    <div class='footer'>
-        <ul class='list'>
-            <li class='highlight'>Hotline : 034 222 22 22</li>
+    <div className='footer'>
+        <ul className='list'>
+            <li className='highlight'>Hotline : 034 222 22 22</li>
             <li>
-                <ul class='icon'>
+                <ul className='icon'>
                     <li>
                         <a href='#'><img src={Youtube} alt='img'/></a>
                     </li>
@@ -27,7 +27,7 @@ export default function Footer() {
                 </ul>
             </li>
             <li>
-                <ul class='tags'>
+                <ul className='tags'>
                     <li>
                         <a href='#'>Privacy Policy</a>
                     </li>
@@ -39,7 +39,7 @@ export default function Footer() {
                     </li>
                 </ul>
             </li>
-            <li class='highlight'>Copyright © 2024 MrPark</li>
+            <li className='highlight'>Copyright © 2024 MrPark</li>
         </ul>
     </div>
   )

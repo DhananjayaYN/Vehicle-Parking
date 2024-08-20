@@ -1,8 +1,7 @@
 .NaviBar{
-    padding: 5px 50px 0 20px;
+    padding: 2px 20px 0 0;
     margin: 0;
     background-color: white;
-    height: 200px;
     height: 100%;
 }
 
@@ -27,7 +26,7 @@
 
 .NaviList a:hover{
     color: rgba(15, 82, 69, 1);
-    font-size: 17PX;
+    font-size: 16PX;
     font-weight: 600;
 }
 
