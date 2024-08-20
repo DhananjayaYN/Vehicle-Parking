@@ -11,6 +11,8 @@ import './RightSideButtons';
 // import { ParkingContextProvider } from '../../../context/ParkingContext';
 import ParkingContext from '../../../context/PakingContext';
 
+import ErrorMessage from '../../../Components/ErrorMessage';
+import Swal from 'sweetalert2';
 
 // import CustomSelect from './CustomSelect'; 
 import { ReactComponent as CarIcon } from '../Images/Cutomer/VehicleCategories/Car.svg';
@@ -23,16 +25,105 @@ import ParkingGrid from './ParkingGrid';
 import CarImage from '../Images/Cutomer/VehicleCategories/Car.svg';
 import BikeImage from '../Images/Cutomer/VehicleCategories/Bike.svg';
 import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg'; 
+// import { se } from 'date-fns/locale';
+// import { set } from 'date-fns';
 
 
 // export default function SelectParkingSlot({ selectedCategory }) {
   export default function SelectParkingSlot() {
 
+  const [selectedDate, setSelectedDate ] = useState(null);
+  const [inTime, setInTime ] = useState(null);
+  const [outTime, setOutTime ] = useState(null);
+  const [reservationType, setReservationType] = useState('single');
+  const [cartItems, setCartItems] = useState([]);
+
+  const [ selectedParking, setSelectedParking ] = useState('Havelock');
   const { selectedCategory, setSelectedCategory } = useContext(ParkingContext);
   const [parkings, setParkings] = useState(null)
   const [isCartOpen, setIsCartOpen] = useState(false);
-  
 
+  const handleAddToCart = (slot) => {
+    if(!selectedDate || !inTime || !outTime){
+      Swal.fire({
+        title: "Error",
+        text: "Please select a date, in-time, and out-time before adding to cart.",
+        icon: "error",
+        confirmButtonText: "OK"
+    });
+      // alert("Please select a date, in-time, and out-time before adding to cart.");
+      return;
+    }
+
+    if(inTime >= outTime){
+      Swal.fire({
+        title: "Error",
+        text: "Out-time should be greater than in-time.",
+        icon: "error",
+        confirmButtonText: "OK"
+    });
+      // alert("Out-time should be greater than in-time.");
+      return;
+    }
+
+    if(selectedDate <= new Date() && inTime <= new Date()){
+      Swal.fire({
+        title: "Error",
+        text: "In-time should be greater than current time.",
+        icon: "error",
+        confirmButtonText: "OK"
+    });
+      // alert("In-time should be greater than current time.");
+      return;
+    }
+
+    if (reservationType === "single" && cartItems.length > 0) {
+      Swal.fire({
+        title: "Error",
+        text: "You can only add one booking to the cart for single reservations.Switch to multiple reservations to add more than one booking.",
+        icon: "error",
+        confirmButtonText: "OK"
+    });
+      // alert("You can only add one slot to the cart for single reservations.");
+      return;
+    }
+
+    const isDuplicate = cartItems.some(
+      (item) =>
+        item.slot._id === slot._id &&
+        item.selectedDate === selectedDate &&
+        item.inTime === inTime &&
+        item.outTime === outTime
+    );
+
+    if (isDuplicate) {
+      Swal.fire({
+        title: "Error",
+        text: "This slot is already in your cart for the selected time period.",
+        icon: "error",
+        confirmButtonText: "OK"
+    });
+      // alert("This slot is already in your cart for the selected time period.");
+      return;
+    }
+
+    const newItem = {
+      slot,
+      selectedDate,
+      inTime,
+      outTime,
+    }
+
+    setCartItems([...cartItems, newItem]);
+  }
+
+  const handleRemoveFromCart = (index) => {
+    const updateCartItems = cartItems.filter((item, i) => i !== index);
+    setCartItems(updateCartItems);
+  }
+
+
+  
   // useEffect(() => {
   //   const fetchParkings = async () => {
   //     const response = await fetch('/api/parking-slots')
@@ -45,10 +136,13 @@ import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg';
 
   //   fetchParkings()
   // }, [])
-
+  
   useEffect(() => {
     const fetchParkingsByCategory = async () => {
-      const response = await fetch(`/api/parking-slots/?vehicle_type=${selectedCategory}`)
+      
+      const response = await fetch(`/api/slots/search/name?name=${selectedParking}&vehicle_type=${selectedCategory}`)
+
+      // const response = await fetch(`/api/parking-slots/?vehicle_type=${selectedCategory}`)
       const json = await response.json()
 
       if(response.ok){
@@ -57,7 +151,7 @@ import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg';
     }
 
     fetchParkingsByCategory()
-  }, [selectedCategory])
+  }, [selectedCategory, selectedParking])
 
   // const [vehicleType, setVehicleType] = useState(selectedCategory);
 
@@ -109,12 +203,25 @@ import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg';
           </Navbar>
         </div>
         <div className="rightside">
-          <RightSideButtons/>
+          <RightSideButtons
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+            inTime={inTime}
+            setInTime={setInTime}
+            outTime={outTime}
+            setOutTime={setOutTime}
+            reservationType={reservationType}
+            setReservationType={setReservationType}
+            orderCount={cartItems.length}
+          />
         </div>
       </div>
       <div className="parking-grid">
         {parkings ? 
-          <ParkingGrid parkings={parkings} /> : 
+          <ParkingGrid
+            parkings={parkings} 
+            onAddToCart={handleAddToCart}
+          /> : 
           <p>Loading...</p>
         }
       </div>
@@ -128,7 +235,13 @@ import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg';
       </div>
       </div>
       
-      {isCartOpen && <Cart onClose={handleCloseCart} />}
+      {isCartOpen && 
+            <Cart 
+                onClose={handleCloseCart} 
+                cartItems={cartItems}
+                onRemove={handleRemoveFromCart}
+                // onAddToCart={handleAddToCart}
+            />}
    
     </div>
   );

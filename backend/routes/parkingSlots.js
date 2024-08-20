@@ -1,28 +1,39 @@
-const express = require('express')
+const express = require('express');
+const router = express.Router();
+
 const {
-    createParking,
-    getParking,
     getParkings,
+    getParking,
+    createParking,
     deleteParking,
     updateParking,
-    getParkingsByVehicle
-} = require('../controllers/parkingController')
+    getParkingsByVehicle,
+    getParkingsByName,
+    getParkingsPopulated
+} = require('../controllers/parkingController');
 
-const router = express.Router()
+// Route to get all parkings
+router.get('/', getParkings);
 
-//get all parkings
-// router.get('/', getParkings)
+// Route to get all parkings with slots populated
+router.get('/populated', getParkingsPopulated);
 
-//get parkings by id
-router.get('/:id', getParking)
+// Route to get a single parking by ID with slots populated
+router.get('/:id', getParking);
 
-router.get('/', getParkingsByVehicle)
+// Route to create a new parking
+router.post('/', createParking);
 
-//post new parking
-router.post('/', createParking)
+// Route to delete a parking by ID (and associated slots)
+router.delete('/:id', deleteParking);
 
-router.delete('/:id', deleteParking)
+// Route to update a parking by ID
+router.patch('/:id', updateParking);
 
-router.patch('/:id', updateParking)
+// Route to get parkings by vehicle type
+router.get('/vehicle', getParkingsByVehicle);
 
-module.exports = router
+// Route to get parkings by name
+router.get('/name', getParkingsByName);
+
+module.exports = router;

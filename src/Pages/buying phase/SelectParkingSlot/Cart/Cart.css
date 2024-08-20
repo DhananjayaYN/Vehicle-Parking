@@ -9,10 +9,36 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 10000;
   }
-  
-  .cart-content {
+
+/* .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  } */
+
+/* .header .heading {
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+} */
+
+/* .close-button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+} */
+
+.cart-content {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
@@ -21,22 +47,78 @@
     max-width: 500px;
     text-align: center;
   }
-  
-  .close-button {
+
+.head{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 10px;
+    border-bottom: 1px solid #ddd; /* Optional: for a divider line */
+}
+
+.head .heading {
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.close-button {
+    padding: 5px 10px;
+    background-color: #465c57;
+    color: white;
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
+    right: 0px;
+    /* top: 50%; */
+    transform: translateY(-50%);
     border: none;
-    font-size: 18px;
+    border-radius: 5px;
+    font-size: 15px;
     cursor: pointer;
-  }
+}
+
+.close-button:hover{
+    background-color: #3b4e4a;
+}
 
   .header{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1fr 1fr 0.3fr;
     gap: 10px;
-    /* align-items: center; */
+    align-items: center;
 
   }
   
+.control-buttons{
+    display: flex;
+    /* justify-content: center; */
+    justify-content: flex-end;
+    padding-right: 10px;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.control-buttons button{
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.control-buttons .checkout-button{
+    background-color: #0F5245;
+}
+
+.control-buttons .checkout-button:hover{
+    background-color: #3b4e4a;
+}
+
+.control-buttons .clear-button{
+    background-color: #EC4747;
+}
+
+.control-buttons .clear-button:hover{
+    background-color: #FF6B6B;
+}

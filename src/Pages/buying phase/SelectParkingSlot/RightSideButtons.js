@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from 'react-datepicker';
 import Clock from 'react-clock';
@@ -9,19 +10,49 @@ import 'react-clock/dist/Clock.css';
 import './RightSideButtons.css';
 
 
-const RightSideButtons = () => {
+// const RightSideButtons = () => {
 
-    const [selectedDate, setSelectedDate ] = useState(null);
+const RightSideButtons = ({ selectedDate, setSelectedDate, inTime, setInTime, outTime, setOutTime, reservationType, setReservationType, orderCount }) => {
 
-    const [inTime, setInTime ] = useState(null);
+    const [canChangeToSingle, setCanChangeToSingle] = useState(true);
 
-    const [outTime, setOutTime ] = useState(null);
+    useEffect(() => {
+        if (orderCount > 1) {
+            setCanChangeToSingle(false);
+        } else {
+            setCanChangeToSingle(true);
+        }
+    }, [orderCount]);
+
+    const handleReservationTypeChange = (e) => {
+        const selectedValue = e.target.value;
+        
+        if (selectedValue === "single" && !canChangeToSingle) {
+            Swal.fire({
+                title: "Error",
+                text: "There are more than 1 item in the cart. You need to remove items from the cart to change the reservation type to 'Single Day'.",
+                icon: "error",
+                confirmButtonText: "OK"
+                
+            });
+            // Swal("Error", "You need to remove items from the cart to change the reservation type to 'Single Day'.", "error");
+            // alert("You need to remove items from the cart to change to single day reservation.");
+        } else {
+            setReservationType(selectedValue);
+        }
+    };
 
     const [isOpen, setIsOpen] = useState(true);
 
     const handleInTime = (time) => {
         if(selectedDate == null){
-            alert("Select a date first!");
+            Swal.fire({
+                title: "Error",
+                text: "Select a date first!",
+                icon: "error",
+                confirmButtonText: "OK"
+            });
+            // alert("Select a date first!");
         }
         else {
             setInTime(time);
@@ -31,10 +62,22 @@ const RightSideButtons = () => {
 
     const handleOutTime = (time) => {
         if(inTime ==  null){
-            alert("Select In Time first!");
+            Swal.fire({
+                title: "Error",
+                text: "Select In Time first!",
+                icon: "error",
+                confirmButtonText: "OK"
+            });
+            // alert("Select In Time first!");
         }
         else if(time <= inTime){
-            alert("Out Time must at least be 1 hour after in time");
+            Swal.fire({
+                title: "Error",
+                text: "Out Time must at least be 1 hour after in time",
+                icon: "error",
+                confirmButtonText: "OK"
+            });
+            // alert("Out Time must at least be 1 hour after in time");
         }
         else{
             setOutTime(time);
@@ -101,7 +144,7 @@ const RightSideButtons = () => {
                 <p className="button-title">
                     Reservation Type:
                 </p>
-                <select name="reservation" id="reservation">
+                <select name="reservation" id="reservation" value={reservationType} onChange={handleReservationTypeChange}>
                     <option value="multiple">Multiple Days</option>
                     <option value="single">Single Day</option>
                 </select>
