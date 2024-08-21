@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 20%;
+    background: url("C:\Users\Admin\Documents\Vehicle project\Vehicle-Parking\src\Components\assets\82f39da1c896b088418b5f5f91d9230f.jpg");
+    background-size: cover;
+    background-position: center;
+}
+

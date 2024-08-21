@@ -5,18 +5,24 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import HomeCustomer from "./Pages/HomeCustomer";
+import LoginFrom from "./Pages/LoginForm/login";
+import assets from "./Pages/assets";
+
+
+
 
 function App() {
   return (
-    <div className="App">
+    <><div className="App">
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<HomePage/>}></Route>
-          <Route path="/customer" element={<HomeCustomer/>}></Route>
+          <Route exact path="/" element={<HomePage />}></Route>
+          <Route path="/customer" element={<HomeCustomer />}></Route>
         </Routes>
       </BrowserRouter>
-      
-    </div>
+
+  </div></>
+    
   );
 }
 
