@@ -1,10 +1,10 @@
-import Hello from "./components/hello2";
+import billing from "./components/billing";
 
 function App() {
 
   return (
     <div>
-      <Hello/>
+      <billing/>
     </div>
 
   );

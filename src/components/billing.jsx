@@ -1,14 +1,19 @@
 
-import "./hello2.css";
+import "./billing.css";
 import logo from "../img/logo.svg";
 import search from "../img/search.svg";
 import map from "../img/map.svg";
 import list from "../img/list.svg";
 import { useState, useEffect } from 'react';
 import { FaCircleUser } from "react-icons/fa6";
-import Footer from '../components/footer';
-import Navbar from '../components/navbar';
+import Footer from './footer';
+import Navbar from './navbar';
 import watermark from '../img/hidden logo.svg'
+
+const address="University of Ruhuna";
+const locationName="Matara, 07, beach Rd";
+const tel = 119;
+const email= "test@gmail.coom";
 
 const Hello = () => {
 
@@ -76,6 +81,12 @@ const Hello = () => {
                         </div>
                         <div className="location">
                            <h5>Location Data</h5>
+                           <ul>
+                            <li>{locationName}</li>
+                            <li>{address}</li>
+                            <li>{tel}</li>
+                            <li>{email}</li>
+                           </ul>
                            
                           
                            

@@ -123,7 +123,7 @@ height: 15%;
 }
 
 .location{
-    display: flex;
+    /* display: flex; */
     margin: auto;
     margin: 9%;
     height: 80%;
@@ -132,14 +132,21 @@ height: 15%;
     border: 2px solid black;
 
 }
+
+.location li{
+    /* list-style-image: url(../img/home.png); */
+    
+    background-size: 100% auto;
+}
 .location h5{
+    margin-bottom: 300%;
     display: flex;
     margin: auto;
 
     margin-top: 10%;
     width: 100%;
     
-    background-color: aliceblue;
+    background-color: rgb(240, 255, 240);
 }
 .forButton{
     
