@@ -10,7 +10,7 @@ import BussReg from "./Pages/BussReg";
 function App() {
   return (
     <div className="App">
-      <BussReg />
+      <BussReg id="a" />
     </div>
   );
 }
