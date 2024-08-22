@@ -26,7 +26,8 @@ const capitalizeFirstLetter = (string) => {
 };
 
 
-const ParkingGrid = ({ parkings }) => {
+const ParkingGrid = ({ parkings, onAddToCart }) => {
+  
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [dialogPosition, setDialogPosition] = useState({ top: 0, left: 0 });
   const dialogRef = useRef(null);
@@ -43,6 +44,15 @@ const ParkingGrid = ({ parkings }) => {
 
     setDialogPosition({ top: dialogTop, left: dialogLeft });
   };
+
+  const handleAddToCartClick = () => {
+    onAddToCart(selectedSlot);
+    setSelectedSlot(null);
+  };
+
+  const handleCancelButtonClick = () => {
+    setSelectedSlot(null);
+  }
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -92,11 +102,14 @@ const ParkingGrid = ({ parkings }) => {
           {/* <p>Level: {selectedSlot.level}</p> */}
           <p>Lot Number: {selectedSlot.lot_number}</p>
           <p>Vehicle Type: {capitalizeFirstLetter(selectedSlot.vehicle_type)}</p>
-          <p>Floor: {selectedSlot.floor ? selectedSlot.floor : "N/A"}</p>
-          <p>Start Time: {selectedSlot.start_time}</p>
-          <p>End Time: {selectedSlot.end_time}</p>
+          {/* <p>Level: {selectedSlot.level ? selectedSlot.level : "N/A"}</p> */}
+          {/* <p>Start Time: {selectedSlot.start_time || "n/a"}</p> */}
+          {/* <p>End Time: {selectedSlot.end_time}</p> */}
           <p>Availability: {selectedSlot.availability ? 'Available' : 'Not Available'}</p>
-          <button>Add to Cart</button>
+          <div className="buttons">
+          <button onClick={handleCancelButtonClick}>Cancel</button>
+          <button onClick={handleAddToCartClick}>Add to Cart</button>
+          </div>
         </div>
       )}
     </div>

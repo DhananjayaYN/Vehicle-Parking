@@ -1,0 +1,31 @@
+/* ErrorMessage.css */
+.error-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 0, 0, 0.9);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+.error-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.error-close-button {
+    background-color: white;
+    color: red;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.error-close-button:hover {
+    background-color: #f5f5f5;
+}
