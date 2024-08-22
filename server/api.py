@@ -1,11 +1,20 @@
 from fastapi import FastAPI,HTTPException;
+from fastapi.middleware.cors import CORSMiddleware;
 from pymongo import MongoClient;
 from pydantic import BaseModel;
 from bson import ObjectId;
+from pymongo.errors import PyMongoError;
 
 app = FastAPI(title="Mr Park API using FastAPI")
 conn = MongoClient("mongodb+srv://hansaliviru:mrparkadminpwd@mrpark.juwa5qh.mongodb.net/")
-
+origins= ["http://localhost:3000"]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials = True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def get_owner_all_data():
@@ -22,10 +31,15 @@ def get_owner_all_data():
 def get_all_ownerAuthentication_accounts():
     try:
         data= [{"_id":str(item["_id"]),"email":item["email"],"password":item["password"]}for item in conn.test.ownerAuthentication.find()]
-        if(data!=[]):
-            return data
-        else:
+        if data :
+            if(data!=[]):
+                return data
+            else:
+                raise HTTPException(status_code=404, detail="Owner not found")
+        else :
             raise HTTPException(status_code=404, detail="Owner not found")
+    except PyMongoError as e:
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")  
     except HTTPException as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
     
@@ -45,6 +59,7 @@ def get_id_in_ownerAuthentication_account(email : str , password : str):
 def get_owner(id : str):
     try:
         data= [ {"_id":str(item["_id"]),"id":item["id"],"company_name":item["company_name"],"name":item["name"],"email":item["email"],"phone_number":item["phone_number"],"address":item["address"],"car":item["car"],"bike":item["bike"],"threewheel":item["threewheel"],"car_charging_fee":item["car_charging_fee"],"bike_charging_fee":item["bike_charging_fee"],"threewheel_charging_fee":item["threewheel_charging_fee"],"bank_details":item["bank_details"]}for item in conn.test.owner.find({"id":id})]
+        
         if(data!=[]):
             return data
         else:
