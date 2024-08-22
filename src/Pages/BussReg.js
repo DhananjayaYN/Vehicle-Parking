@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import "./BussReg.css";
 import Footer from '../Components/Footer';
 import logo from '../Images/inner logo.svg';
@@ -14,12 +14,37 @@ import bin_Icon from '../Images/bin_Icon.svg';
 import HeaderNaviBarDropdown from '../Components/HeaderNaviBarDropdown';
 import CompanyDetails from '../Components/CompanyDetails';
 import Packages from '../Components/Packages';
-const BussReg = () => {
+import axios from 'axios';
+import Swal from 'sweetalert2';
+
+
+// function wait(ms) {
+//     return new Promise(resolve => setTimeout(resolve, ms));
+// }
+
+
+const BussReg = (props) => {
+
+    const Swal = require('sweetalert2')
+    const clickerror = () => {
+        const handleClick = () => {
+            Swal.fire({
+                title: 'success!',
+                text: 'Do you want to continue',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        }
+        handleClick();
+    }
+
+    const [showbutton, setshowbutton] = useState(true);
+
     const [searchValue, setSearchValue] = useState();
 
     //Icons
     const [selectvalue, setselectvalue] = useState();
-    const [showCar, setshowCar] = useState(true);
+    const [showCar, setshowCar] = useState(false);
     const chngecarvalue = () => {
         setshowCar(true);
         setselectvalue("");
@@ -28,7 +53,7 @@ const BussReg = () => {
         setshowCar(false);
     }
 
-    const [showBike, setshowBike] = useState(true);
+    const [showBike, setshowBike] = useState(false);
     const chngebikevalue = () => {
         setshowBike(true);
         setselectvalue("");
@@ -36,7 +61,7 @@ const BussReg = () => {
     const chngebikevalue2 = () => {
         setshowBike(false);
     }
-    const [showThreeWheel, setshowThreeWheel] = useState(true);
+    const [showThreeWheel, setshowThreeWheel] = useState(false);
     const chngethreewheelvalue = () => {
         setshowThreeWheel(true);
         setselectvalue("");
@@ -45,11 +70,7 @@ const BussReg = () => {
         setshowThreeWheel(false);
     }
 
-    //bank
-    const [bank, setbank] = useState();
 
-    //branch
-    const [branch, setbranch] = useState();
 
     //image
     const [image, setImage] = useState();
@@ -58,6 +79,118 @@ const BussReg = () => {
         setImage(e.target.files[0]);
 
     }
+
+    const [companyName, setcompanyName] = useState(null);
+    const [yourName, setyourName] = useState(null);
+    const [email, setemail] = useState(null);
+    const [phoneNumber, setphoneNumber] = useState(null);
+    const [address, setaddress] = useState(null);
+    const [car_charging_fee, setcar_charging_fee] = useState(0);
+    const [bike_charging_fee, setbike_charging_fee] = useState(0);
+    const [threewheel_charging_fee, setthreewheel_charging_fee] = useState(0);
+    const [Bank, setBank] = useState(null);
+    const [Branch, setBranch] = useState(null);
+    const [Name, setName] = useState(null);
+    const [accountNumber, setaccountNumber] = useState(null);
+
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            // await wait(1000);
+            try {
+                const response = await axios.get(`http://localhost:8000/${props.id}`);
+                setcompanyName(response.data[0]["company_name"]);
+                setyourName(response.data[0]["name"]);
+                setemail(response.data[0]["email"]);
+                setphoneNumber(response.data[0]["phone_number"]);
+                setaddress(response.data[0]["address"]);
+                setshowCar(response.data[0]["car"]);
+                setshowBike(response.data[0]["bike"]);
+                setshowThreeWheel(response.data[0]["threewheel"]);
+                setcar_charging_fee(response.data[0]["car_charging_fee"]);
+                setbike_charging_fee(response.data[0]["bike_charging_fee"]);
+                setthreewheel_charging_fee(response.data[0]["threewheel_charging_fee"])
+                setBank(response.data[0]["bank_details"]["bank_name"]);
+                setBranch(response.data[0]["bank_details"]["branch_name"]);
+                setName(response.data[0]["bank_details"]["name"]);
+                setaccountNumber(response.data[0]["bank_details"]["account_number"]);
+                setshowbutton(false);
+            } catch (error) {
+                console.error("Error fetching data: ", error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    const UpdateAbove = async () => {
+        try {
+            axios.put(`http://localhost:8000/above/${props.id}`, {
+                "company_name": companyName,
+                "name": yourName,
+                "email": email,
+                "phone_number": phoneNumber
+            })
+            clickerror();
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    const UpdateBelow = async () => {
+        try {
+            axios.put(`http://localhost:8000/below/${props.id}`, {
+                "address": address,
+                "car": showCar,
+                "bike": showBike,
+                "threewheel": showThreeWheel,
+                "car_charging_fee": car_charging_fee,
+                "bike_charging_fee": bike_charging_fee,
+                "threewheel_charging_fee": threewheel_charging_fee,
+                "bank_details": {
+                    "bank_name": Bank,
+                    "branch_name": Branch,
+                    "name": Name,
+                    "account_number": accountNumber
+                }
+            })
+            clickerror();
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    const UpdateAllData = async () => {
+        console.log("Hello World!!!" + "\n" + companyName + "\n" + yourName + "\n" + email + "\n" + phoneNumber + "\n" + address + "\n" + Bank + "\n" + Branch + "\n" + Name + "\n" + accountNumber);
+        try {
+            axios.post("http://localhost:8000/", {
+                "id": props.id,
+                "company_name": companyName,
+                "name": yourName,
+                "email": email,
+                "phone_number": phoneNumber,
+                "address": address,
+                "car": showCar,
+                "bike": showBike,
+                "threewheel": showThreeWheel,
+                "car_charging_fee": car_charging_fee,
+                "bike_charging_fee": bike_charging_fee,
+                "threewheel_charging_fee": threewheel_charging_fee,
+                "bank_details": {
+                    "bank_name": Bank,
+                    "branch_name": Branch,
+                    "name": Name,
+                    "account_number": accountNumber
+                }
+
+            })
+            clickerror();
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
 
 
     return (
@@ -90,11 +223,11 @@ const BussReg = () => {
                                         <div className='B_frame11_body'>
                                             <div className='B_frame11_body_contnts'>
                                                 <div className='B_frame11_body_01'>
-                                                    <p>Enter company Name :<span className='B_input1'><input type='text' /></span></p>
-                                                    <p>Enter your name :<span className='B_input2'><input type='text' /></span></p>
-                                                    <p> Enter email :<span className='B_iconimage1' ><img src={emailIcon} style={{ width: 20, height: 20, position: 'relative', top: 5 }} /></span><span className='B_input3'><input type='text' /></span></p>
-                                                    <p>Enter phone number :<span className='B_iconimage2'><img src={Phone_Icon} style={{ width: 18, height: 18, position: 'relative', top: 5 }} /></span><span className='B_input4'><input type='text' /></span><span className='B_btn'><button>Verify</button></span> </p>
-                                                    <button className='B_button11'>Update Details</button>
+                                                    <p>Enter company Name :<span className='B_input1'><input type='text' value={companyName} onChange={(e) => { setcompanyName(e.target.value) }} /></span></p>
+                                                    <p>Enter your name :<span className='B_input2'><input type='text' value={yourName} onChange={(e) => { setyourName(e.target.value) }} /></span></p>
+                                                    <p> Enter email :<span className='B_iconimage1' ><img src={emailIcon} style={{ width: 20, height: 20, position: 'relative', top: 5 }} /></span><span className='B_input3'><input type='text' value={email} onChange={(e) => { setemail(e.target.value) }} /></span></p>
+                                                    <p>Enter phone number :<span className='B_iconimage2'><img src={Phone_Icon} style={{ width: 18, height: 18, position: 'relative', top: 5 }} /></span><span className='B_input4'><input type='text' value={phoneNumber} onChange={(e) => { setphoneNumber(e.target.value) }} /></span><span className='B_btn'><button>Verify</button></span> </p>
+                                                    {(!showbutton) && <button className='B_button11' onClick={UpdateAbove}>Update Details</button>}
 
                                                 </div>
                                             </div>
@@ -117,24 +250,24 @@ const BussReg = () => {
                                     <div className='B_frame21'>
                                         <div className='B_frame21_body'>
                                             <div className='B_frame21_body_01'>
-                                                <p>Enter Address : <span className='B_input5'><input type='text' /></span></p>
+                                                <p>Enter Address : <span className='B_input5'><input type='text' value={address} onChange={(e) => { setaddress(e.target.value) }} /></span></p>
                                                 <p>Add Vehicle Types <span className='B_vehicle_type'><span><select onChange={(e) => { setselectvalue(e.target.value) }}><option></option><option value="Car"  >Car </option><option value="Bike">Bike</option><option value="Three wheel">Three wheel</option></select></span> {(selectvalue == "Car") && <span className='B_iconimage3' ><img src={Car_Icon} style={{ width: 20, height: 20, position: 'relative', top: 5 }} /> <input type='checkbox' onClick={chngecarvalue} /></span>} {(selectvalue == "Bike") && <span className='B_iconimage4' ><img src={Bike_Icon} style={{ width: 20, height: 20, position: 'relative', top: 5 }} /><input type='checkbox' onClick={chngebikevalue} /></span>}{(selectvalue == "Three wheel") && <span className='B_iconimage5' ><img src={Three_wheel_Icon} style={{ width: 20, height: 20, position: 'relative', top: 5 }} /><input type='checkbox' onClick={chngethreewheelvalue} /></span>}<span className='B_showCar'>{(showCar) && <span className='B_iconimage3' ><img src={Car_Icon} style={{ width: 20, height: 20, position: 'relative', top: 5 }} /><span className='B_iconimage3' ><img src={bin_Icon} onClick={chngecarvalue2} style={{ width: 16, height: 16, position: 'relative', top: 5 }} /></span></span>}</span><span className='B_showBike'>{(showBike) && <span className='B_iconimage3' ><img src={Bike_Icon} style={{ width: 20, height: 20, position: 'relative', top: 5 }} /><span className='B_iconimage3' ><img src={bin_Icon} onClick={chngebikevalue2} style={{ width: 16, height: 16, position: 'relative', top: 5 }} /></span></span>}</span><span className='B_showThreeWheel'>{(showThreeWheel) && <span className='B_iconimage3' ><img src={Three_wheel_Icon} style={{ width: 20, height: 20, position: 'relative', top: 5 }} /><span className='B_iconimage3' ><img src={bin_Icon} onClick={chngethreewheelvalue2} style={{ width: 16, height: 16, position: 'relative', top: 5 }} /></span></span>}</span></span></p>
-                                                <p>Charging Fee (Slot per hour) :<span className='B_Slotperhour'>{(showCar) && <span className='B_input6'><input type='text' /></span>}{(showBike) && <span className='B_input7'><input type='text' /></span>}{(showThreeWheel) && <span className='B_input8'><input type='text' /></span>}</span></p>
+                                                <p>Charging Fee (Slot per hour) :<span className='B_Slotperhour'>{(showCar) && <span className='B_input6'><input type='text' value={car_charging_fee} onChange={(e) => { setcar_charging_fee(e.target.value) }} /></span>}{(showBike) && <span className='B_input7'><input type='text' value={bike_charging_fee} onChange={(e) => { setbike_charging_fee(e.target.value) }} /></span>}{(showThreeWheel) && <span className='B_input8'><input type='text' value={threewheel_charging_fee} onChange={(e) => { setthreewheel_charging_fee(e.target.value) }} /></span>}</span></p>
                                                 <p>Company Bank Details :</p>
                                                 <div>
                                                     <ul style={{ listStyleType: 'none' }}>
-                                                        <li><p>Bank  <span className='B_bank'><select onChange={(e) => { setbank(e.target.value) }}><option></option><option value="Bank of Ceylon">Bank of Ceylon</option><option value="Commercial Bank">Commercial Bank</option><option value="Hatton National Bank">Hatton National Bank</option><option value="People's Bank">People's Bank</option><option value="Sampath Bank">Sampath Bank</option><option value="National Development Bank">National Development Bank</option><option value="Union Bank">Union Bank</option><option value="DFCC Bank">DFCC Bank</option><option value="Cargills Bank">Cargills Bank</option></select></span></p></li>
-                                                        <li><p>Branch <span className='B_branch'><select onChange={(e) => { setbranch(e.target.value) }}><option></option><option value="Bank of Ceylon - Colombo Fort">Bank of Ceylon - Colombo Fort</option><option value="Bank of Ceylon - Kandy">Bank of Ceylon - Kandy</option><option value="Bank of Ceylon - Galle">Bank of Ceylon - Galle</option><option value="Commercial Bank - Colombo Main">Commercial Bank - Colombo Main</option><option value="Commercial Bank - Nugegoda">Commercial Bank - Nugegoda</option><option value="Commercial Bank - Jaffna">Commercial Bank - Jaffna</option><option value="Hatton National Bank - Head Office">Hatton National Bank - Head Office</option><option value="Hatton National Bank - Mount Lavinia">Hatton National Bank - Mount Lavinia</option><option value="Hatton National Bank - Kandy">Hatton National Bank - Kandy</option><option value="People's Bank - Colombo Fort">People's Bank - Colombo Fort</option><option value="People's Bank - Rajagiriya">People's Bank - Rajagiriya</option><option value="People's Bank - Matara">People's Bank - Matara</option><option value="Sampath Bank - Colombo 3">Sampath Bank - Colombo 3</option><option value="Sampath Bank - Battaramulla">Sampath Bank - Battaramulla</option><option value="Sampath Bank - Anuradhapura">Sampath Bank - Anuradhapura</option><option value="National Development Bank - Colombo">National Development Bank - Colombo</option><option value="National Development Bank - Negombo">National Development Bank - Negombo</option><option value="National Development Bank - Gampaha">National Development Bank - Gampaha</option><option value="Union Bank - Colombo">Union Bank - Colombo</option><option value="Union Bank - Kandy">Union Bank - Kandy</option><option value="Union Bank - Jaffna">Union Bank - Jaffna</option><option value="DFCC Bank - Colombo">DFCC Bank - Colombo</option><option value="DFCC Bank - Galle">DFCC Bank - Galle</option><option value="DFCC Bank - Kandy">DFCC Bank - Kandy</option><option value="Cargills Bank - Colombo">Cargills Bank - Colombo</option><option value="Cargills Bank - Kandy">Cargills Bank - Kandy</option><option value="Cargills Bank - Jaffna">Cargills Bank - Jaffna</option>
+                                                        <li><p>Bank  <span className='B_bank'><select onChange={(e) => { setBank(e.target.value) }} value={Bank}><option></option><option value="Bank of Ceylon">Bank of Ceylon</option><option value="Commercial Bank">Commercial Bank</option><option value="Hatton National Bank">Hatton National Bank</option><option value="People's Bank">People's Bank</option><option value="Sampath Bank">Sampath Bank</option><option value="National Development Bank">National Development Bank</option><option value="Union Bank">Union Bank</option><option value="DFCC Bank">DFCC Bank</option><option value="Cargills Bank">Cargills Bank</option></select></span></p></li>
+                                                        <li><p>Branch <span className='B_branch'><select onChange={(e) => { setBranch(e.target.value) }} value={Branch}><option></option><option value="Bank of Ceylon - Colombo Fort">Bank of Ceylon - Colombo Fort</option><option value="Bank of Ceylon - Kandy">Bank of Ceylon - Kandy</option><option value="Bank of Ceylon - Galle">Bank of Ceylon - Galle</option><option value="Commercial Bank - Colombo Main">Commercial Bank - Colombo Main</option><option value="Commercial Bank - Nugegoda">Commercial Bank - Nugegoda</option><option value="Commercial Bank - Jaffna">Commercial Bank - Jaffna</option><option value="Hatton National Bank - Head Office">Hatton National Bank - Head Office</option><option value="Hatton National Bank - Mount Lavinia">Hatton National Bank - Mount Lavinia</option><option value="Hatton National Bank - Kandy">Hatton National Bank - Kandy</option><option value="People's Bank - Colombo Fort">People's Bank - Colombo Fort</option><option value="People's Bank - Rajagiriya">People's Bank - Rajagiriya</option><option value="People's Bank - Matara">People's Bank - Matara</option><option value="Sampath Bank - Colombo 3">Sampath Bank - Colombo 3</option><option value="Sampath Bank - Battaramulla">Sampath Bank - Battaramulla</option><option value="Sampath Bank - Anuradhapura">Sampath Bank - Anuradhapura</option><option value="National Development Bank - Colombo">National Development Bank - Colombo</option><option value="National Development Bank - Negombo">National Development Bank - Negombo</option><option value="National Development Bank - Gampaha">National Development Bank - Gampaha</option><option value="Union Bank - Colombo">Union Bank - Colombo</option><option value="Union Bank - Kandy">Union Bank - Kandy</option><option value="Union Bank - Jaffna">Union Bank - Jaffna</option><option value="DFCC Bank - Colombo">DFCC Bank - Colombo</option><option value="DFCC Bank - Galle">DFCC Bank - Galle</option><option value="DFCC Bank - Kandy">DFCC Bank - Kandy</option><option value="Cargills Bank - Colombo">Cargills Bank - Colombo</option><option value="Cargills Bank - Kandy">Cargills Bank - Kandy</option><option value="Cargills Bank - Jaffna">Cargills Bank - Jaffna</option>
                                                         </select></span></p></li>
-                                                        <li><p>Name<span className='B_input9'><input type='text' /></span></p></li>
-                                                        <li><p>Account Number<span className='B_input10'><input type='text' /></span></p></li>
+                                                        <li><p>Name<span className='B_input9'><input type='text' value={Name} onChange={(e) => { setName(e.target.value) }} /></span></p></li>
+                                                        <li><p>Account Number<span className='B_input10'><input type='text' value={accountNumber} onChange={(e) => { setaccountNumber(e.target.value) }} /></span></p></li>
                                                     </ul>
                                                 </div>
-                                                <p><span className='B_Updatebtn'><button>Update Details</button></span></p>
+                                                <p><span className='B_Updatebtn' >{(!showbutton) && <button onClick={UpdateBelow}>Update Details</button>}</span></p>
                                             </div>
                                         </div>
                                     </div>
-                                    <p><span className='B_CreateMyParkingSpacebtn'><button>Create My Parking Space</button></span></p>
+                                    <p><span className='B_CreateMyParkingSpacebtn'>{(showbutton) && (companyName != null) && (yourName != null) && (email != null) && (phoneNumber != null) && (address != null) && (car_charging_fee != null) && (bike_charging_fee != null) && (threewheel_charging_fee != null) && (Bank != null) && (Branch != null) && (Name != null) && (accountNumber != null) && <button onClick={UpdateAllData}>Create My Parking Space</button>}</span></p>
                                     <br />
                                 </div>
                                 <div className='B_card22'>
