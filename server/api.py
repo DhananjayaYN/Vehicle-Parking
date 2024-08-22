@@ -24,6 +24,8 @@ def get_owner_all_data():
             return data
         else:
             raise HTTPException(status_code=404, detail="Owner not found")
+    except PyMongoError as e:
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")  
     except HTTPException as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
 
@@ -52,6 +54,8 @@ def get_id_in_ownerAuthentication_account(email : str , password : str):
             return data
         else:
             raise HTTPException(status_code=404, detail="Owner not found")
+    except PyMongoError as e:
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")  
     except HTTPException as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
 
@@ -64,6 +68,8 @@ def get_owner(id : str):
             return data
         else:
             raise HTTPException(status_code=404, detail="Owner not found")
+    except PyMongoError as e:
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")  
     except HTTPException as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
     
@@ -75,6 +81,8 @@ def get_company_details(id : str):
             return data
         else:
             raise HTTPException(status_code=404, detail="Owner not found")
+    except PyMongoError as e:
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")  
     except HTTPException as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
 
@@ -105,6 +113,8 @@ def insert_owner_data(owner : Owner):
     try:
         conn.test.owner.insert_one(owner.dict())
         return {"DATA":"Success"}
+    except PyMongoError as e:
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")  
     except HTTPException as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
 
@@ -116,6 +126,8 @@ def update_all__owner_data(id : str,owner : Owner):
             return [ {"_id":str(item["_id"]),"id":item["id"],"company_name":item["company_name"],"name":item["name"],"email":item["email"],"phone_number":item["phone_number"],"address":item["address"],"car":item["car"],"bike":item["bike"],"threewheel":item["threewheel"],"car_charging_fee":item["car_charging_fee"],"bike_charging_fee":item["bike_charging_fee"],"threewheel_charging_fee":item["threewheel_charging_fee"],"bank_details":item["bank_details"]}for item in conn.test.owner.find()]
        else:
             raise HTTPException(status_code=404, detail="Owner not found")
+    except PyMongoError as e:
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")  
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
 
@@ -135,6 +147,8 @@ def update_above_data(id : str ,data : Above):
             return [ {"_id":str(item["_id"]),"id":item["id"],"company_name":item["company_name"],"name":item["name"],"email":item["email"],"phone_number":item["phone_number"],"address":item["address"],"car":item["car"],"bike":item["bike"],"threewheel":item["threewheel"],"car_charging_fee":item["car_charging_fee"],"bike_charging_fee":item["bike_charging_fee"],"threewheel_charging_fee":item["threewheel_charging_fee"],"bank_details":item["bank_details"]}for item in conn.test.owner.find()]
         else:
             raise HTTPException(status_code=404, detail="Owner not found")
+    except PyMongoError as e:
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")  
     except HTTPException as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
 
@@ -156,7 +170,9 @@ def update_below_data(id : str ,data : Below):
         if(result):
            return [ {"_id":str(item["_id"]),"id":item["id"],"company_name":item["company_name"],"name":item["name"],"email":item["email"],"phone_number":item["phone_number"],"address":item["address"],"car":item["car"],"bike":item["bike"],"threewheel":item["threewheel"],"car_charging_fee":item["car_charging_fee"],"bike_charging_fee":item["bike_charging_fee"],"threewheel_charging_fee":item["threewheel_charging_fee"],"bank_details":item["bank_details"]}for item in conn.test.owner.find()]
         else:
-            raise HTTPException(status_code=404, detail="Owner not found") 
+            raise HTTPException(status_code=404, detail="Owner not found")
+    except PyMongoError as e:
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")   
     except HTTPException as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
 
@@ -165,6 +181,8 @@ def delete_owner_data(id : str):
     try:
         conn.test.owner.delete_one({"id":id})
         return {"DATA":"Success"}
+    except PyMongoError as e:
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")  
     except HTTPException as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
     
