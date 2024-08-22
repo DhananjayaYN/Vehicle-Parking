@@ -1,9 +1,10 @@
-from fastapi import FastAPI,HTTPException;
+from fastapi import FastAPI, File, UploadFile, HTTPException, Response
 from fastapi.middleware.cors import CORSMiddleware;
 from pymongo import MongoClient;
 from pydantic import BaseModel;
 from bson import ObjectId;
 from pymongo.errors import PyMongoError;
+import gridfs
 
 app = FastAPI(title="Mr Park API using FastAPI")
 conn = MongoClient("mongodb+srv://hansaliviru:mrparkadminpwd@mrpark.juwa5qh.mongodb.net/")
@@ -15,6 +16,57 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# image start
+# Setup MongoDB client
+db = conn['image_db']
+fs = gridfs.GridFS(db)
+
+@app.get("/all-images/{id}")
+async def get_all_images(id: str):
+    try:
+        files = []
+        for file in fs.find({"id":id}):
+            files.append({
+                "file_id": str(file._id),
+                "filename": file.filename,
+                "id":file.id,
+                "content_type": file.content_type
+            })
+
+        return  files
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
+     
+@app.post("/upload/{id}")
+async def upload_image(id : str ,file: UploadFile = File(...)):
+    try:
+        contents = await file.read()
+        file_id = fs.put(contents, filename=file.filename,id=id)
+        return {"file_id": str(file_id), "filename": file.filename,"id":id}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
+    
+
+
+@app.get("/image/{file_id}")
+async def get_image(file_id: str):
+    try:
+        # Convert the file_id from string to ObjectId
+        object_id = ObjectId(file_id)
+        # Retrieve the file from GridFS
+        grid_out = fs.get(object_id)
+        # Create a Response object with the file's content and appropriate content type
+       
+        return Response(content=grid_out.read(), media_type="image/jpeg")  # Adjust media_type based on file type
+    except gridfs.errors.NoFile:
+        raise HTTPException(status_code=404, detail="File not found")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
+    
+
+# image end
 
 @app.get("/")
 def get_owner_all_data():
