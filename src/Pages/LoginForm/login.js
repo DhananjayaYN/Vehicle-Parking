@@ -5,7 +5,7 @@ import { CiLock } from "react-icons/ci";
 
 
 
-export const Login = () => {
+export default function Login () {
   return (
     <div className='wrapper'>
 
