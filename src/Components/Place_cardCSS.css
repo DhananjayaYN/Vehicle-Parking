@@ -14,6 +14,7 @@
     border-radius: 8px;
     box-shadow: 5px 5px 10px ;
     text-align: center;
+   
 }
 
 .card_item{
@@ -22,20 +23,110 @@
     padding: 0;
     margin: 0;
     height: 110px;
-    
+    font-size: 80%;
 }
 
 .card_top{
     margin: 0;
     padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.card_image{
+    margin: 0;
+    padding: 0;
+    /* background-color: blueviolet; */
+}
+
+.card_image img{
+    margin: 5% ;
+    margin-left: 20%;
+    width: 60%;
+    height: auto;
+    border-radius: 20%;
+}
+
+.card_open_time{
+    margin: 0;
+    padding: 0;
+    /* background-color: rgb(117, 117, 236); */
+}
+
+.card_show_open{
+    margin: 5% 15% 0 5%;
+    background-color: red;
+    border-radius: 20%;
+    height: 35%;
+    color: white;
+}
+
+.card_show_time{
+    font-size: 75%;
 }
 
 .card_middle{
     margin: 0;
-    padding: 0;
+    padding: 5px;
+    /* background-color: blue; */
+    position: relative;
+}
+
+.card_middle_address{
+    font-size: 60%;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.card_middle_title{
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 90%;
+}
+
+.card_middle_icon{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-left: 10%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.card_vehicle-image{
+    width: 15%;
+    margin-right: 5%;
 }
 
 .card_bottom{
     margin: 0;
     padding: 0;
+    /* background-color: beige; */
+}
+
+.card_bottom hr {
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 80%;
+    background-color: blue;
+    height: 5%;
+}
+
+.card_bottom_grid {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.card_bottom_rating {
+    margin: 0;
+    padding: 0;
+    /* background-color: blue; */
+}
+
+.card_bottom_price {
+    margin: 0;
+    /* background-color: chartreuse; */
 }

@@ -3,7 +3,9 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './Place_cardCSS.css';
-
+import bike from '../Images/Cutomer/VehicleCategories/Bike.svg'
+import wheel from '../Images/Cutomer/VehicleCategories/Bus.svg'
+import car from '../Images/Cutomer/VehicleCategories/Car.svg'
 
 // Sample array of card data
 // const cardData = [
@@ -55,11 +57,51 @@ export default function Places_card() {
     <div className='items'>
         <Slider {...settings}>
         {cardData.map((card) => (
-          <div className="card" key={card.id}>
+          <div className="card" key={card._id}>
             <div className='card_item'>
-                <div className='card_top'>Lorem</div>
-                <div className='card_middle'>Lorem</div>
-                <div className='card_bottom'>Lorem</div>
+                <div className='card_top'>
+                  <div className='card_image'>
+                    <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpBR0FJBeFSJIulcpdvBOr2AafIvPMti5e1g&s' alt='Shop Image'/>
+                  </div>
+                  <div className='card_open_time'>
+                    <div className='card_show_open'>Open</div>
+                    <div className='card_show_time'>6.00 am - 11.00 pm</div>
+                  </div>     
+                </div>
+                <div className='card_middle'>
+                  <div className='card_middle_title'>{card.company_name}</div>
+                  {/* <p className='card_middle_address'>({card.address?.address_line_1 || 'N/A'}), {card.address?.address_line_2 || 'N/A'}</p> */}
+                  <div className='card_middle_icon'>
+                    {card.vehicle_types?.bike && (
+                      <img
+                       src={bike}
+                       alt="Bike"
+                       className="card_vehicle-image"
+                     />
+                    )}
+                    {card.vehicle_types?.threewheel && (
+                      <img
+                       src={wheel}
+                       alt="wheel"
+                       className="card_vehicle-image"
+                     />
+                    )}
+                    {card.vehicle_types?.car && (
+                      <img
+                       src={car}
+                       alt="car"
+                       className="card_vehicle-image"
+                     />
+                    )}
+                  </div>
+                </div>
+                <div className='card_bottom'>
+                  <hr/>
+                  <div className='card_bottom_grid'>
+                    <div className='card_bottom_rating'>sdfj</div>
+                    <div className='card_bottom_price'>jhccsc</div>
+                  </div>
+                </div>
             </div>
           </div>
         ))}

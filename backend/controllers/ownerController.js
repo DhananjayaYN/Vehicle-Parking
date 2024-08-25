@@ -4,10 +4,30 @@ const Parking = require('../models/ParkingSlots');
 const mongoose = require('mongoose');
 
 const createOwner = async (req, res) => {
-    const { name, contactNumber, email, parkings } = req.body;
+    const {
+        company_name,
+        name,
+        email,
+        phone_number,
+        address,
+        vehicle_types,
+        vehicle_charging_fees,
+        bank_details
+    } = req.body;
+    // const { name, contactNumber, email, parkings } = req.body;
 
     try {
-        const owner = await ParkingOwner.create({ name, contactNumber, email, parkings });
+        const owner = await ParkingOwner.create({
+            company_name,
+            name,
+            email,
+            phone_number,
+            address,
+            vehicle_types,
+            vehicle_charging_fees,
+            bank_details
+        });
+        // const owner = await ParkingOwner.create({ name, contactNumber, email, parkings });
         res.status(201).json(owner);
     }catch(error){
         res.status(400).json({error: error.message})
@@ -17,27 +37,27 @@ const createOwner = async (req, res) => {
 const getOwnerById = async (req, res) => {
     const { id } = req.params;
 
-    if(!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'No such owner'});
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({ error: 'No such owner' });
     }
 
-    const owner = await ParkingOwner.findById(id).populate('parkings');
+    try {
+        const owner = await ParkingOwner.findById(id);
+        
+        if (!owner) {
+            return res.status(404).json({ error: 'No such owner' });
+        }
 
-    if(!owner){
-        return res.status(404).json({error: 'No such owner'})
+        res.status(200).json(owner);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
     }
-    
-    try{
-        res.status(200).json(owner)
-    }catch(error){
-        res.status(400).json({error: error.message})
-    }
-}
+};
 
 const getOwners = async (req, res) => {
-
+    // console.log('getOwners');
     try{
-        const owners = await ParkingOwner.find().populate('parkings');
+        const owners = await ParkingOwner.find();
         res.status(200).json(owners) 
     }catch(error){
         res.status(400).json({error: error.message})
@@ -76,7 +96,7 @@ const deleteOwner = async (req, res) => {
             return res.status(404).json({error: 'No such owner'})
         }
 
-        res.status(200).json({ message: "Owner deleted successfully "} + owner)
+        res.status(200).json({ message: "Owner deleted successfully "}, owner)
         
     }catch(error){
         res.status(400).json({error: error.message})
