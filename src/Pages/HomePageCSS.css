@@ -87,15 +87,15 @@ LoadScript,GoogleMap{
     width: 80px;
 }
 
-.package{
+/* .package{
     position: relative;
     top: 8%;
     background-color: rgba(217, 217, 217, 1);
-}
+} */
 
 .shop_display{
     position: relative;
-    top: 10%;
+    top: 0;
     width: 100%;
     max-width: 300px;
     /*align-items: center;

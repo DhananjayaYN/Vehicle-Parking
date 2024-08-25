@@ -42,6 +42,11 @@ export default function Places_card() {
 
     }, []); // Empty dependency array means this effect runs once after the initial render
 
+    // Event handler to handle card click
+    const handleCardClick = (id) => {
+      console.log(`Card ID: ${id}`); // Log the card ID to the console
+    };
+
      // Settings for the react-slick slider
     const settings = {
         dots: false,
@@ -57,7 +62,7 @@ export default function Places_card() {
     <div className='items'>
         <Slider {...settings}>
         {cardData.map((card) => (
-          <div className="card" key={card._id}>
+          <div className="card" key={card._id} onClick={() => handleCardClick(card._id)}>
             <div className='card_item'>
                 <div className='card_top'>
                   <div className='card_image'>
@@ -70,7 +75,7 @@ export default function Places_card() {
                 </div>
                 <div className='card_middle'>
                   <div className='card_middle_title'>{card.company_name}</div>
-                  {/* <p className='card_middle_address'>({card.address?.address_line_1 || 'N/A'}), {card.address?.address_line_2 || 'N/A'}</p> */}
+                  <p className='card_middle_address'>({card.address?.address_line_1 || 'N/A'}), {card.address?.address_line_2 || 'N/A'}</p>
                   <div className='card_middle_icon'>
                     {card.vehicle_types?.bike && (
                       <img

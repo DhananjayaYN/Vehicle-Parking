@@ -99,7 +99,7 @@ export default function HomePage() {
                 </div>
                 <div className='shops'>
                     <div className='shop_view'>
-                        <div className='package'>Packages</div>
+                        {/* <div className='package'>Packages</div> */}
                         <div className='shop_display'>
                            <Card_list/>
                         </div>

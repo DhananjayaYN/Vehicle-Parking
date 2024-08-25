@@ -14,15 +14,15 @@
     border-radius: 8px;
     box-shadow: 5px 5px 10px ;
     text-align: center;
-   
+    cursor: pointer;
 }
 
 .card_item{
     display: grid;
-    grid-template-rows: 35% 45% 20%;
+    grid-template-rows: 30% 50% 20%;
     padding: 0;
     margin: 0;
-    height: 110px;
+    height: 23vh;
     font-size: 80%;
 }
 
@@ -40,9 +40,10 @@
 }
 
 .card_image img{
-    margin: 5% ;
+    margin: 3% ;
+    margin-top: 6%;
     margin-left: 20%;
-    width: 60%;
+    width: 70%;
     height: auto;
     border-radius: 20%;
 }
