@@ -9,7 +9,7 @@ import watermark from '../Images/hidden logo.svg'
 import search from '../Images/search.svg'
 import map from '../Images/map.svg'
 import list from '../Images/list.svg'
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import Toggle_button from '../Components/Toggle_button';
 import Card_list from '../Components/Places_card';
 
@@ -32,6 +32,7 @@ const option = {
 
 export default function HomePage() {
 
+    const [coordinates, setCoordinates] = useState([]);
     const [showSidebarBox, showFullSidebar] = useState(window.innerWidth <= 900);
 
     // Function to handle window resize
@@ -61,6 +62,38 @@ export default function HomePage() {
     const show = () =>{
         showFullSidebar(prevState => !prevState);
     }
+
+     // ------------------Function to convert addresses to coordinates-------------------
+    const geocodeAddresses = async () => {
+        const response = await fetch(`/api/owners/`);
+        const jsona = await response.json();
+
+        const geocodedLocations = await Promise.all(
+            jsona.map(async (location) => {
+                const address = `${location.address.address_line_1}, ${location.address.address_line_2}, ${location.address.district}`;
+                // console.log(address);
+                const response = await fetch(
+                    `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=AIzaSyDXLZ8bWEPoplJetqqQJa-m2f6pAiVKo1c`
+                );
+                const data = await response.json();
+                // console.log(data);
+                if (data.results && data.results.length > 0) {
+                    const { lat, lng } = data.results[0].geometry.location;
+                    // console.log(lat);
+                    return { id: location._id, lat, lng };
+                }
+                return null;
+            })
+        );
+
+        setCoordinates(geocodedLocations.filter(Boolean)); // Update state with valid coordinates
+    };
+
+    useEffect(() => {
+        geocodeAddresses(); // Call geocode function when component mounts
+    }, []);
+
+
 
   return (
     <div class='Home'>
@@ -92,8 +125,11 @@ export default function HomePage() {
                             mapContainerStyle={mapContainerStyle}
                             center={center}
                             zoom={7}
-                        
-                            />
+                            >
+                                {coordinates.map(coord => (
+                                    <Marker key={coord.id} position={{ lat: coord.lat, lng: coord.lng }} />
+                                ))}
+                            </GoogleMap>
                         </LoadScript>
                     </div>
                 </div>
