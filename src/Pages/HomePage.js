@@ -34,7 +34,13 @@ export default function HomePage() {
 
     const [coordinates, setCoordinates] = useState([]);
     const [showSidebarBox, showFullSidebar] = useState(window.innerWidth <= 900);
+    const [selectedLocationId, setSelectedLocationId] = useState(null); // State to track selected location
 
+    // Handle marker click
+    const handleMarkerClick = (id) => {
+      setSelectedLocationId(id); // Update the state with the clicked marker's ID
+    };
+    
     // Function to handle window resize
     const handleResize = () => {
         if (window.innerWidth > 900) {
@@ -127,7 +133,10 @@ export default function HomePage() {
                             zoom={7}
                             >
                                 {coordinates.map(coord => (
-                                    <Marker key={coord.id} position={{ lat: coord.lat, lng: coord.lng }} />
+                                    <Marker key={coord.id} 
+                                    position={{ lat: coord.lat, lng: coord.lng }} 
+                                    onClick={() => handleMarkerClick(coord.id)} // Handle marker click
+                                    />
                                 ))}
                             </GoogleMap>
                         </LoadScript>
@@ -137,7 +146,7 @@ export default function HomePage() {
                     <div className='shop_view'>
                         {/* <div className='package'>Packages</div> */}
                         <div className='shop_display'>
-                           <Card_list/>
+                           <Card_list selectedLocationId={selectedLocationId}/> {/* Pass selectedLocationId */}
                         </div>
                     </div>
                     <button className='more'>More</button>

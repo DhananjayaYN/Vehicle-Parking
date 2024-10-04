@@ -1,4 +1,4 @@
-import React , {useState , useEffect} from 'react'
+import React , {useState , useEffect , useRef} from 'react'
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -18,10 +18,11 @@ import car from '../Images/Cutomer/VehicleCategories/Car.svg'
 //     { id: 7, title: 'Card 7', content: 'This is the seventh card' },
 // ];
 
-export default function Places_card() {
+export default function Places_card({ selectedLocationId }) {
 
     // useState hook to manage the card data
     const [cardData, setCardData] = useState([]);
+    const sliderRef = useRef(null); // Ref to access the slider instance
 
     // useEffect hook to fetch data from the backend when the component mounts
     useEffect(() => {
@@ -42,6 +43,16 @@ export default function Places_card() {
 
     }, []); // Empty dependency array means this effect runs once after the initial render
 
+    // Move the slider to the card that matches the selected location
+    useEffect(() => {
+      if (selectedLocationId && cardData.length > 0 && sliderRef.current) {
+          const index = cardData.findIndex(card => card._id === selectedLocationId);
+          if (index !== -1) {
+            sliderRef.current.slickGoTo(index);
+          }
+      }
+    }, [selectedLocationId, cardData]);
+    
     // Event handler to handle card click
     const handleCardClick = (id) => {
       console.log(`Card ID: ${id}`); // Log the card ID to the console
@@ -60,7 +71,7 @@ export default function Places_card() {
 
   return (
     <div className='items'>
-        <Slider {...settings}>
+        <Slider ref={sliderRef} {...settings}>
         {cardData.map((card) => (
           <div className="card" key={card._id} onClick={() => handleCardClick(card._id)}>
             <div className='card_item'>
