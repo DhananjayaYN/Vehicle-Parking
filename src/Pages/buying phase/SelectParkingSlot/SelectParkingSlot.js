@@ -22,6 +22,7 @@ import { ReactComponent as ThreeWheelIcon } from '../Images/Cutomer/VehicleCateg
 import cartIcon from '../../../Images/Cutomer/selectParking/cart.svg'
 import RightSideButtons from './RightSideButtons';
 import ParkingGrid from './ParkingGrid';
+import CarTopViewImage from '../../../Images/Cutomer/selectParking/carTopView.svg';
 import CarImage from '../Images/Cutomer/VehicleCategories/Car.svg';
 import BikeImage from '../Images/Cutomer/VehicleCategories/Bike.svg';
 import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg'; 
@@ -115,6 +116,13 @@ import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg';
     }
 
     setCartItems([...cartItems, newItem]);
+
+    Swal.fire({
+      title: "Success",
+      text: "Slot added to cart successfully.",
+      icon: "success",
+      confirmButtonText: "OK"
+  });
   }
 
   const handleRemoveFromCart = (index) => {
@@ -152,6 +160,10 @@ import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg';
 
     fetchParkingsByCategory()
   }, [selectedCategory, selectedParking])
+
+  useEffect(() => {
+    
+  }, [selectedCategory])
 
   // const [vehicleType, setVehicleType] = useState(selectedCategory);
 

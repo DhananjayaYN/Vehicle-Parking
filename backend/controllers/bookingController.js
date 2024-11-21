@@ -64,6 +64,7 @@ const getBookings = async(req, res) => {
 
 const getBookingById = async(req, res) => {
     const { id } = req.params;
+
     try{
         if (!mongoose.Types.ObjectId.isValid(id)) {
             return res.status(404).json({ error: 'No such booking' });
@@ -75,6 +76,60 @@ const getBookingById = async(req, res) => {
     }
 };
 
+
+const getBookingsByParkingIdAndVehicleTypeAndDateAndTime = async (req, res) => {
+    const { parking_id, vehicle_type, date, inTime, outTime } = req.query;
+    try {
+        const parsedDate = new Date(date);
+        const parsedInTime = new Date(inTime);
+        const parsedOutTime = new Date(outTime);
+
+        if (isNaN(parsedDate.getTime()) || isNaN(parsedInTime.getTime()) || isNaN(parsedOutTime.getTime())) {
+            return res.status(400).json({ error: "Invalid date format" });
+        }
+
+        const bookings = await Booking.find({
+            parking_id,
+            vehicle_type,
+            "bookings.date": parsedDate,
+            $or: [
+                { "bookings.in_time": { $lte: parsedInTime }, "bookings.out_time": { $gt: parsedInTime } },
+                { "bookings.in_time": { $lt: parsedOutTime }, "bookings.out_time": { $gte: parsedOutTime } }
+            ]
+        });
+
+        if (bookings.length === 0) {
+            return res.status(404).json({ error: 'No bookings found' });
+        }
+
+        res.status(200).json(bookings);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+
+
+
+
+// const getBookingsByParkingIdAndVehicleTypeAndDateAndTime = async(req, res) => {
+//     const { parking_id,vehicle_type, date, inTime, outTime } = req.params;
+
+//     console.log('hutto');
+//     try {
+//         const bookings = await Booking.find({ 
+//             parking_id,
+//             vehicle_type,
+//             date, inTime, outTime });
+
+//         if (bookings.length === 0) {
+//             return res.status(404).json({ error: 'No bookings found' });
+//         }
+
+//         res.status(200).json(bookings);
+//     } catch (error) {
+//         res.status(400).json({ error: error.message });
+//     }
+// }
 const updateBooking = async(req, res) => {
     const { id } = req.params;
     const { customer_id, slot_id, in_time, out_time, price, status } = req.body;
@@ -108,4 +163,5 @@ module.exports = {
     getBookingById,
     updateBooking,
     deleteBooking,
+    getBookingsByParkingIdAndVehicleTypeAndDateAndTime
 };
