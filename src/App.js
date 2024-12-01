@@ -15,6 +15,8 @@ import UserSignup from "./Pages/UserSignup";
 import OwnerSignup from "./Pages/OwnerSignup";
 //---------Hansa------------
 import CustomerPage from './Pages/CustomerPage'
+import Checkout from './Pages/buying phase/Checkout/Checkout';
+
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
           <Route path="/userSignup" element={<UserSignup/>}></Route>
           <Route path="/ownerSignup" element={<OwnerSignup/>}></Route>
           <Route path="/customer/select-vehicle" element={<CustomerPage/>}></Route>
+          <Route path="/customer/checkout" element={<Checkout/>}></Route>
         </Routes>
       </BrowserRouter>
       

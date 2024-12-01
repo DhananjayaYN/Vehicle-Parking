@@ -2,7 +2,7 @@ import React from 'react';
 import './Cart.css';
 import CartItem from './CartItem';
 
-export default function Cart({ onClose, cartItems, onRemove }) {
+export default function Cart({ onClose, cartItems, onRemove, onClear }) {
   return (
     <div className="cart-modal">
       <div className="cart-content">
@@ -32,28 +32,10 @@ export default function Cart({ onClose, cartItems, onRemove }) {
         )}
 
         <div className="control-buttons">
-          <button className="clear-button" onClick={() => onRemove(-1)}>Clear Cart</button>
+          <button className="clear-button" onClick={() => onClear()}>Clear Cart</button>
           <button className="checkout-button">Checkout</button>
         </div>
 
-        {/* {cartItems.map((item, index) => (
-          <CartItem 
-            key={index}
-            selectedDate={item.selectedDate} 
-            inTime={item.inTime} 
-            outTime={item.outTime} 
-            onDelete={() => onRemove(index)}
-          />
-        ))} */}
-
-        {/* <CartItem selectedDate={new Date()} inTime={new Date()} outTime={new Date()} onDelete={() => {}} /> */
-
-        }
-        {/* {CartItems.map((item, index) => (
-            <CartItem key={index} index={index} item={item} onRemove={onRemove} />
-          ))
-        } */}
-        {/* <p>Your cart is currently empty.</p> */}
       </div>
     </div>
   );

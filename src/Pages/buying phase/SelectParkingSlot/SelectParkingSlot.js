@@ -1,8 +1,12 @@
 import React, { useState, useEffect , useRef, useContext} from 'react';
+import { useNavigate } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
+
 
 // import Select from 'react-select';
 import { ReactSVG } from 'react-svg'; 
 import Cart from './Cart/Cart';
+import Checkout from '../Checkout/Checkout'
 import './SelectParkingSlot.css';
 import './RightSideButtons';
 // import { useParkingContext } from '../../../hooks/useParkingContext';
@@ -32,6 +36,8 @@ import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg';
 
 // export default function SelectParkingSlot({ selectedCategory }) {
   export default function SelectParkingSlot() {
+
+  const navigate = useNavigate();
 
   const [selectedDate, setSelectedDate ] = useState(null);
   const [inTime, setInTime ] = useState(null);
@@ -130,6 +136,33 @@ import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg';
     setCartItems(updateCartItems);
   }
 
+  const handleClearCart = () => {
+    setCartItems([]);
+  };
+  
+  const handleProceedToCheckout = () => {
+    if (cartItems.length === 0) {
+      Swal.fire({
+        title: "Error",
+        text: "Your cart is empty. Please add at least one slot to proceed.",
+        icon: "error",
+        confirmButtonText: "OK"
+      });
+      return;
+    }
+    const selectedDates = cartItems.map(item => item.selectedDate);
+    const parkingTimes = cartItems.map(item => `${item.inTime} - ${item.outTime}`);
+    const parkingSlots = cartItems.map(item => item.slot.name);
+
+    navigate('/customer/checkout', {
+      state: {
+        reservationType,
+        selectedDates,
+        parkingTimes,
+        parkingSlots
+      }
+    });
+  };
 
   
   // useEffect(() => {
@@ -243,7 +276,7 @@ import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg';
           <ReactSVG src={cartIcon} className="cart-icon" />
           Cart
         </button>
-        <button className='continue-button'>Continue</button>
+        <button className='continue-button' onClick={handleProceedToCheckout}>Continue</button>
       </div>
       </div>
       
@@ -252,9 +285,9 @@ import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg';
                 onClose={handleCloseCart} 
                 cartItems={cartItems}
                 onRemove={handleRemoveFromCart}
+                onClear={handleClearCart}
                 // onAddToCart={handleAddToCart}
             />}
-   
     </div>
   );
 }
