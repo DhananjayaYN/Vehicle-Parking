@@ -14,6 +14,7 @@ import OwnerLogin from "./Pages/Login/OwnerLogin";
 import UserSignup from "./Pages/Login/UserSignup";
 import OwnerSignup from "./Pages/Login/OwnerSignup";
 import ParkingSpace from "./Pages/BusinessMode/ParkingSpace";
+import AboutUs from "./Pages/AboutUs/AboutUs";
 //---------Hansa------------
 import CustomerPage from './Pages/CustomerPage'
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/userSignup" element={<UserSignup/>}></Route>
           <Route path="/ownerSignup" element={<OwnerSignup/>}></Route>
           <Route path="/ParkingSpace" element={<ParkingSpace/>}></Route> 
+          <Route path="/AboutUs" element={<AboutUs/>}></Route> 
           <Route path="/customer/select-vehicle" element={<CustomerPage/>}></Route>
         </Routes>
       </BrowserRouter>

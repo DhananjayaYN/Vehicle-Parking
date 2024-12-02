@@ -156,6 +156,48 @@ LoadScript,GoogleMap{
     padding: 0;
     margin: 0;
 }
+.about_home_image{
+    width: 37%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.stat{
+    display: "flex";
+    justify-content: center;
+    /* gap: "50px"; */
+    padding: "20px";
+    /* height: 8%; */
+    /* margin: 0; */
+    /* padding: 0; */
+    position: absolute;
+    top: 40%;
+    right: 25%;
+    width: 18%;
+}
+.stat div{
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+}
+
+.stat h2{
+    font-size: 32px;
+    color: rgba(15, 82, 69, 1);
+    font-weight: 550;
+    margin: 0;
+}
+.stat p{
+    display: inline-block;
+    font-size: 12px;
+    color: rgba(15, 82, 69, 1);
+    font-weight: 400;
+    margin: 0;
+
+}
 
 .rectragle{
     width: 100%;

@@ -1,0 +1,52 @@
+/* Container for the team section */
+.team-container {
+    text-align: center;
+    padding: 10px;
+    margin-top: 1.5%;
+    margin-left: 5%;
+    float:left;
+    float: top;
+  }
+
+  div p{
+    font-size: 20px;
+    /* font-weight: 550; */
+    margin: 8px;
+  }
+  div p span{
+    /* font-size: 32px; */
+    font-weight: 520;
+    /* margin: 0; */
+  }
+  
+  /* Grid layout for team members */
+  .team-grid {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+  
+  /* Each team member card */
+  .team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  /* Circular team member images */
+  .team-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 5px;
+  }
+  
+  /* Team member name styling */
+  .team-name {
+    margin: 0;
+    font-size: 10px;
+  }
+  
