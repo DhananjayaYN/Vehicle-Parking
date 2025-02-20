@@ -100,15 +100,30 @@ const ParkingGrid = ({ parkings, onAddToCart }) => {
         <div className="slot-details" ref={dialogRef} style={{ top: dialogPosition.top, left: dialogPosition.left }}>
           {/* <p>Name: {selectedSlot.name}</p> */}
           {/* <p>Level: {selectedSlot.level}</p> */}
-          <p>Lot Number: {selectedSlot.lot_number}</p>
-          <p>Vehicle Type: {capitalizeFirstLetter(selectedSlot.vehicle_type)}</p>
+          <div className="lot-number">
+              Lot Number: &nbsp;
+            <div className="lot-num">
+              {selectedSlot.lot_number}  
+            </div>
+          </div>
+          <div className="vehicle-type">
+            Vehicle Type: &nbsp;
+            <div className="vehicle">
+              {capitalizeFirstLetter(selectedSlot.vehicle_type)}
+            </div>
+          </div>
           {/* <p>Level: {selectedSlot.level ? selectedSlot.level : "N/A"}</p> */}
           {/* <p>Start Time: {selectedSlot.start_time || "n/a"}</p> */}
           {/* <p>End Time: {selectedSlot.end_time}</p> */}
-          <p>Availability: {selectedSlot.availability ? 'Available' : 'Not Available'}</p>
+          <div className="availability">
+            Availability:  &nbsp;
+            <div className={selectedSlot.availability ? 'available' : 'not-available'}>
+              {selectedSlot.availability ? 'Available' : 'Not Available'}
+            </div>
+          </div>
           <div className="buttons">
-          <button onClick={handleCancelButtonClick}>Cancel</button>
-          <button onClick={handleAddToCartClick}>Add to Cart</button>
+            <button  className="cancel-button" onClick={handleCancelButtonClick}>Cancel</button>
+            <button className='add-to-cart-button' onClick={handleAddToCartClick}>Add to Cart</button>
           </div>
         </div>
       )}

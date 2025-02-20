@@ -1,0 +1,220 @@
+.Home{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 94% 6%;
+}
+
+.main_box{
+    display: grid;
+    grid-template-columns: 25% 75%;
+    
+}
+
+.sidebar_box{
+    background-color: rgba(15, 82, 69, 1);
+    align-items: center;
+    display: grid;
+    grid-template-rows: 20% 45% 35%;
+    z-index: 0;
+}
+
+.rightside_box{
+    display: grid;
+    grid-template-rows: 10% 90%;
+}
+
+.container{
+    background-color: white;
+    position: relative;
+}
+
+.contents{
+    position: relative;
+    height: 100%;
+    z-index: 100;
+}
+
+.logo{
+    height: 75%;
+    display: flex;
+    justify-self: center;
+}
+
+.rectragle{
+    width: 100%;
+    height: 40%;
+    background-color: rgba(164, 217, 207, 1);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.water_mark{
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 48%;
+    opacity: 0.1;
+    z-index: 2;
+}
+
+.sidebar_mobile{
+    display: none;
+}
+
+.order_details {
+    display: flex;
+    flex-direction: column;
+}
+
+.order_details span {
+    margin-bottom: 0; /* Remove extra space under text */
+}
+
+.order_details table {
+    width: 100%; /* Table stretches to fit the container */
+    border-collapse: collapse; /* Remove spacing between cells */
+    text-align: left; /* Align content to the left by default */
+}
+
+.order_details th, .order_details td {
+    padding: 10px; /* Add spacing within cells */
+    border: 1px solid #ddd; /* Add a light border for clarity */
+}
+
+.order_details th {
+    background-color: #f4f4f4; /* Optional: Add a background to headers */
+    font-weight: bold; /* Emphasize header text */
+    text-align: center; /* Center-align headers */
+}
+
+.order_details td {
+    text-align: center; /* Align data in the center to match headers */
+}
+
+.order-form {
+    padding: 20px; /* Add space around form elements */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 20px; /* Space between grid items */
+    max-width: 800px; /* Adjust as needed */
+    margin: 0 auto; /* Center the grid */
+}
+
+.order{
+    display: flex;
+    flex-direction: column;
+}
+
+.order input{
+    width: 50%;
+    height: 30px;
+    margin: 10px 0;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+    background-color: #13A68A;
+    border-radius: 5px;
+    color: white;
+    
+}
+
+.order #vehicle-type-input, #total-amount-input, #vehicle-number-input{
+    /* width: 8%; */
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+/*-----------------------------------------------------------------*/
+@media (max-width: 900px) {
+    .sidebar_box_hidden { 
+    display: none;
+    }
+
+    .sidebar_box{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 300px;
+        z-index: 1000;
+        height: 94%;
+    }
+
+    .sidebar_mobile{ /*new small side bar*/
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(15, 82, 69, 1);
+        margin: 0;
+        padding: 0;
+    }
+
+    .show_button{  /*button for change the side bar size,minimuze side bar*/
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        margin: 0;
+        padding: 0;
+        margin-left: 90%;
+        background-color: rgba(15, 82, 69, 1);
+        border-color: white;
+        z-index: 1000;
+        border-width: 3px;
+        cursor: pointer;
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .show_button_move{ /*button for change the side bar size,maximuze side bar*/
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        margin: 0;
+        padding: 0;
+        left: 275px;
+        top :45%;
+        background-color: rgba(15, 82, 69, 1);
+        border-color: white;
+        z-index: 1100;
+        border-width: 3px;
+        cursor: pointer;
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .logo_mobile{ /*small side bar logo*/
+        width: 80%;
+        margin: 20px 0 0 0;
+    }
+
+    .side_bar_tool{ /*small side bar list*/
+        list-style: none;
+        align-items: center;
+        justify-content: space-between;
+        margin: 20px 0 0 0;
+        padding: 0;
+        
+    }
+
+    .side_tool{
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .main_box{
+        grid-template-columns: 10% 90%;
+    }
+
+    .rectragle{
+        height: 30%;
+    }
+
+}

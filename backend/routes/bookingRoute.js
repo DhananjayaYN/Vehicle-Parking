@@ -4,10 +4,13 @@ const {
     getBookingById,
     getBookings,
     deleteBooking,
-    updateBooking
+    updateBooking,
+    getBookingsByParkingIdAndVehicleTypeAndDateAndTime
 } = require('../controllers/bookingController')
 
 const router = express.Router()
+
+router.get('/filter', getBookingsByParkingIdAndVehicleTypeAndDateAndTime)
 
 router.get('/', getBookings)
 
@@ -18,5 +21,6 @@ router.post('/', createBooking)
 router.delete('/:id', deleteBooking)
 
 router.patch('/:id', updateBooking)
+
 
 module.exports = router

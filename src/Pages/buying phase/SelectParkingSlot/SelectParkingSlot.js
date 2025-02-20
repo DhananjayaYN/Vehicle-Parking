@@ -1,8 +1,12 @@
 import React, { useState, useEffect , useRef, useContext} from 'react';
+import { useNavigate } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
+
 
 // import Select from 'react-select';
 import { ReactSVG } from 'react-svg'; 
 import Cart from './Cart/Cart';
+import Checkout from '../Checkout/Checkout'
 import './SelectParkingSlot.css';
 import './RightSideButtons';
 // import { useParkingContext } from '../../../hooks/useParkingContext';
@@ -10,6 +14,7 @@ import './RightSideButtons';
 // import {ParkingContext} from '../../../context/ParkingContext';
 // import { ParkingContextProvider } from '../../../context/ParkingContext';
 import ParkingContext from '../../../context/PakingContext';
+import { OrderContext } from '../../../context/OrderContext';
 
 import ErrorMessage from '../../../Components/ErrorMessage';
 import Swal from 'sweetalert2';
@@ -22,6 +27,7 @@ import { ReactComponent as ThreeWheelIcon } from '../Images/Cutomer/VehicleCateg
 import cartIcon from '../../../Images/Cutomer/selectParking/cart.svg'
 import RightSideButtons from './RightSideButtons';
 import ParkingGrid from './ParkingGrid';
+import CarTopViewImage from '../../../Images/Cutomer/selectParking/carTopView.svg';
 import CarImage from '../Images/Cutomer/VehicleCategories/Car.svg';
 import BikeImage from '../Images/Cutomer/VehicleCategories/Bike.svg';
 import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg'; 
@@ -32,98 +38,201 @@ import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg';
 // export default function SelectParkingSlot({ selectedCategory }) {
   export default function SelectParkingSlot() {
 
+  const navigate = useNavigate();
+
+  const { selectedCategory, setSelectedCategory } = useContext(ParkingContext);
+  const { addOrder, removeOrder, deleteAllOrders, isEmpty, getOrderCount } = useContext(OrderContext);
+
+
   const [selectedDate, setSelectedDate ] = useState(null);
   const [inTime, setInTime ] = useState(null);
   const [outTime, setOutTime ] = useState(null);
   const [reservationType, setReservationType] = useState('single');
-  const [cartItems, setCartItems] = useState([]);
+  // const [cartItems, setCartItems] = useState([]);
 
   const [ selectedParking, setSelectedParking ] = useState('Havelock');
-  const { selectedCategory, setSelectedCategory } = useContext(ParkingContext);
   const [parkings, setParkings] = useState(null)
   const [isCartOpen, setIsCartOpen] = useState(false);
 
+  // const [selectedDates, setSelectedDates] = useState([]);
+  // const [parkingTimes, setParkingTimes] = useState([]);
+  // const [parkingSlots, setParkingSlots] = useState([]);
+
   const handleAddToCart = (slot) => {
-    if(!selectedDate || !inTime || !outTime){
-      Swal.fire({
-        title: "Error",
-        text: "Please select a date, in-time, and out-time before adding to cart.",
-        icon: "error",
-        confirmButtonText: "OK"
-    });
-      // alert("Please select a date, in-time, and out-time before adding to cart.");
-      return;
+    if (!selectedDate || !inTime || !outTime) {
+        Swal.fire({
+            title: "Error",
+            text: "Please select a date, in-time, and out-time before adding to cart.",
+            icon: "error",
+            confirmButtonText: "OK"
+        });
+        return;
     }
 
-    if(inTime >= outTime){
-      Swal.fire({
-        title: "Error",
-        text: "Out-time should be greater than in-time.",
-        icon: "error",
-        confirmButtonText: "OK"
-    });
-      // alert("Out-time should be greater than in-time.");
-      return;
+    if (inTime >= outTime) {
+        Swal.fire({
+            title: "Error",
+            text: "Out-time should be greater than in-time.",
+            icon: "error",
+            confirmButtonText: "OK"
+        });
+        return;
     }
 
-    if(selectedDate <= new Date() && inTime <= new Date()){
-      Swal.fire({
-        title: "Error",
-        text: "In-time should be greater than current time.",
-        icon: "error",
-        confirmButtonText: "OK"
-    });
-      // alert("In-time should be greater than current time.");
-      return;
-    }
-
-    if (reservationType === "single" && cartItems.length > 0) {
-      Swal.fire({
-        title: "Error",
-        text: "You can only add one booking to the cart for single reservations.Switch to multiple reservations to add more than one booking.",
-        icon: "error",
-        confirmButtonText: "OK"
-    });
-      // alert("You can only add one slot to the cart for single reservations.");
-      return;
-    }
-
-    const isDuplicate = cartItems.some(
-      (item) =>
-        item.slot._id === slot._id &&
-        item.selectedDate === selectedDate &&
-        item.inTime === inTime &&
-        item.outTime === outTime
-    );
-
-    if (isDuplicate) {
-      Swal.fire({
-        title: "Error",
-        text: "This slot is already in your cart for the selected time period.",
-        icon: "error",
-        confirmButtonText: "OK"
-    });
-      // alert("This slot is already in your cart for the selected time period.");
-      return;
+    if (selectedDate <= new Date() && inTime <= new Date()) {
+        Swal.fire({
+            title: "Error",
+            text: "In-time should be greater than current time.",
+            icon: "error",
+            confirmButtonText: "OK"
+        });
+        return;
     }
 
     const newItem = {
-      slot,
-      selectedDate,
-      inTime,
-      outTime,
-    }
+        slot,
+        selectedDate,
+        inTime,
+        outTime,
+    };
 
-    setCartItems([...cartItems, newItem]);
-  }
+    // setCartItems([...cartItems, newItem]);
+
+    // Add order to OrderContext
+    addOrder(newItem);
+
+    Swal.fire({
+        title: "Success",
+        text: "Slot added to cart successfully.",
+        icon: "success",
+        confirmButtonText: "OK"
+    });
+};
+  // const handleAddToCart = (slot) => {
+  //   if(!selectedDate || !inTime || !outTime){
+  //     Swal.fire({
+  //       title: "Error",
+  //       text: "Please select a date, in-time, and out-time before adding to cart.",
+  //       icon: "error",
+  //       confirmButtonText: "OK"
+  //   });
+  //     // alert("Please select a date, in-time, and out-time before adding to cart.");
+  //     return;
+  //   }
+
+  //   if(inTime >= outTime){
+  //     Swal.fire({
+  //       title: "Error",
+  //       text: "Out-time should be greater than in-time.",
+  //       icon: "error",
+  //       confirmButtonText: "OK"
+  //   });
+  //     // alert("Out-time should be greater than in-time.");
+  //     return;
+  //   }
+
+  //   if(selectedDate <= new Date() && inTime <= new Date()){
+  //     Swal.fire({
+  //       title: "Error",
+  //       text: "In-time should be greater than current time.",
+  //       icon: "error",
+  //       confirmButtonText: "OK"
+  //   });
+  //     // alert("In-time should be greater than current time.");
+  //     return;
+  //   }
+
+  //   if (reservationType === "single" && cartItems.length > 0) {
+  //     Swal.fire({
+  //       title: "Error",
+  //       text: "You can only add one booking to the cart for single reservations.Switch to multiple reservations to add more than one booking.",
+  //       icon: "error",
+  //       confirmButtonText: "OK"
+  //   });
+  //     // alert("You can only add one slot to the cart for single reservations.");
+  //     return;
+  //   }
+
+  //   const isDuplicate = cartItems.some(
+  //     (item) =>
+  //       item.slot._id === slot._id &&
+  //       item.selectedDate === selectedDate &&
+  //       item.inTime === inTime &&
+  //       item.outTime === outTime
+  //   );
+
+  //   if (isDuplicate) {
+  //     Swal.fire({
+  //       title: "Error",
+  //       text: "This slot is already in your cart for the selected time period.",
+  //       icon: "error",
+  //       confirmButtonText: "OK"
+  //   });
+  //     // alert("This slot is already in your cart for the selected time period.");
+  //     return;
+  //   }
+
+  //   const newItem = {
+  //     slot,
+  //     selectedDate,
+  //     inTime,
+  //     outTime,
+  //   }
+
+  //   setCartItems([...cartItems, newItem]);
+
+  //   Swal.fire({
+  //     title: "Success",
+  //     text: "Slot added to cart successfully.",
+  //     icon: "success",
+  //     confirmButtonText: "OK"
+  // });
+  // }
 
   const handleRemoveFromCart = (index) => {
-    const updateCartItems = cartItems.filter((item, i) => i !== index);
-    setCartItems(updateCartItems);
+    removeOrder(index);
   }
 
-
+  const handleClearCart = () => {
+    deleteAllOrders();
+  };
   
+  // const handleProceedToCheckout = () => {
+  //   if (cartItems.length === 0) {
+  //     Swal.fire({
+  //       title: "Error",
+  //       text: "Your cart is empty. Please add at least one slot to proceed.",
+  //       icon: "error",
+  //       confirmButtonText: "OK"
+  //     });
+  //     return;
+  //   }
+  //   const selectedDates = cartItems.map(item => item.selectedDate);
+  //   const parkingTimes = cartItems.map(item => `${item.inTime} - ${item.outTime}`);
+  //   const parkingSlots = cartItems.map(item => item.slot.name);
+
+  //   navigate('/customer/checkout', {
+  //     state: {
+  //       reservationType,
+  //       selectedDates,
+  //       parkingTimes,
+  //       parkingSlots
+  //     }
+  //   });
+  // };
+
+  const handleProceedToCheckout = () => {
+    if (isEmpty()) {
+      Swal.fire({
+        title: "Error",
+        text: "Your cart is empty. Please add at least one slot to proceed.",
+        icon: "error",
+        confirmButtonText: "OK"
+      });
+      return;
+    }
+    navigate('/customer/checkout-page');
+  }
   // useEffect(() => {
   //   const fetchParkings = async () => {
   //     const response = await fetch('/api/parking-slots')
@@ -152,6 +261,10 @@ import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg';
 
     fetchParkingsByCategory()
   }, [selectedCategory, selectedParking])
+
+  useEffect(() => {
+    
+  }, [selectedCategory])
 
   // const [vehicleType, setVehicleType] = useState(selectedCategory);
 
@@ -212,7 +325,7 @@ import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg';
             setOutTime={setOutTime}
             reservationType={reservationType}
             setReservationType={setReservationType}
-            orderCount={cartItems.length}
+            orderCount={getOrderCount()} 
           />
         </div>
       </div>
@@ -231,18 +344,19 @@ import BusImage from '../Images/Cutomer/VehicleCategories/Bus.svg';
           <ReactSVG src={cartIcon} className="cart-icon" />
           Cart
         </button>
-        <button className='continue-button'>Continue</button>
+        <button className='continue-button' onClick={handleProceedToCheckout}>Continue</button>
       </div>
       </div>
       
       {isCartOpen && 
             <Cart 
                 onClose={handleCloseCart} 
-                cartItems={cartItems}
+                // cartItems={cartItems}
                 onRemove={handleRemoveFromCart}
+                onClear={handleClearCart}
+                handleCheckout={handleProceedToCheckout}
                 // onAddToCart={handleAddToCart}
             />}
-   
     </div>
   );
 }

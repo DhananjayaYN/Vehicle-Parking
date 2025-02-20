@@ -1,3 +1,7 @@
+*{
+    font-family: 'Roboto';
+}
+
 .parking-container {
     display: flex;
     flex-wrap: nowrap; /* Prevent wrapping to ensure horizontal scrolling */
@@ -74,4 +78,55 @@
     z-index: 1000; /* Ensure the dialog box appears above other elements */
     white-space: nowrap; /* Prevent text from wrapping */
     min-width: 200px; /* Minimum width to ensure enough space for content */
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.cancel-button,
+.add-to-cart-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancel-button {
+    background-color: #ccc;
+    color: #000;
+}
+
+.add-to-cart-button {
+    background-color: #0F5245;
+    color: #fff;
+}
+
+.cancel-button:hover,
+.add-to-cart-button:hover {
+    opacity: 0.8;
+    /* background-color: #555; */
+    /* color: #fff; */
+}
+
+.availability,
+.lot-number,
+.vehicle-type  {
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    height: 100%;
+    font-weight: 500;
+}
+
+.available {
+    
+    /* background-color: #0F5245; */
+    color: rgb(7, 180, 105);
+}
+
+.not-available {
+    color: red;
 }

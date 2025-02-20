@@ -15,10 +15,16 @@ import UserSignup from "./Pages/UserSignup";
 import OwnerSignup from "./Pages/OwnerSignup";
 //---------Hansa------------
 import CustomerPage from './Pages/CustomerPage'
+import Checkout from './Pages/buying phase/Checkout/Checkout';
+import CheckoutPage from './Pages/buying phase/Checkout/CheckoutPage';
+
+import { OrderProvider } from './context/OrderContext';
+
 
 function App() {
   return (
     <div className="App">
+      <OrderProvider>
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<HomePage/>}></Route>
@@ -29,8 +35,12 @@ function App() {
           <Route path="/userSignup" element={<UserSignup/>}></Route>
           <Route path="/ownerSignup" element={<OwnerSignup/>}></Route>
           <Route path="/customer/select-vehicle" element={<CustomerPage/>}></Route>
+          <Route path="/customer/checkout" element={<Checkout/>}></Route>
+          <Route path="/customer/checkout-page" element={<CheckoutPage/>}></Route>
         </Routes>
       </BrowserRouter>
+      </OrderProvider>
+      
       
     </div>
   );
