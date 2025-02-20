@@ -1,6 +1,7 @@
-.SelectVehicleBox{
+.SelectVehicleBox {
     overflow: hidden;
 }
+
 .TopicBox {
     position: relative;
     bottom: 10%;
@@ -86,4 +87,78 @@
 
 .CategoryContainer:hover a {
     color: white;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+    .TopicBox {
+        left: 200px;
+    }
+
+    .TopicText {
+        font-size: 40px;
+    }
+
+    .CategoryContainer {
+        width: 180px;
+        height: 180px;
+    }
+
+    .CategoryContainer a {
+        font-size: 25px;
+    }
+
+    .CategoryContainer .CategoryImage svg {
+        max-width: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .TopicBox {
+        left: 100px;
+    }
+
+    .TopicText {
+        font-size: 30px;
+    }
+
+    .CategoryBox {
+        flex-direction: column;
+    }
+
+    .CategoryContainer {
+        width: 150px;
+        height: 150px;
+    }
+
+    .CategoryContainer a {
+        font-size: 20px;
+    }
+
+    .CategoryContainer .CategoryImage svg {
+        max-width: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .TopicBox {
+        left: 50px;
+    }
+
+    .TopicText {
+        font-size: 25px;
+    }
+
+    .CategoryContainer {
+        width: 120px;
+        height: 120px;
+    }
+
+    .CategoryContainer a {
+        font-size: 18px;
+    }
+
+    .CategoryContainer .CategoryImage svg {
+        max-width: 80px;
+    }
 }

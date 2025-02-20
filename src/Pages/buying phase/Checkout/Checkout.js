@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Checkout = ({ reservationType = '', selectedDates = [], parkingTimes = [], parkingSlots = [] }) => {
+const Checkout = ({ reservationType, selectedDates, parkingTimes, parkingSlots}) => {
     const [customerName, setCustomerName] = React.useState('');
     const [contactNumber, setContactNumber] = React.useState('');
     const [email, setEmail] = React.useState('');

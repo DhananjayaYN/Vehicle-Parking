@@ -4,7 +4,10 @@ import Footer from '../Components/Footer';
 import Navibar from '../Components/NaviBar';
 import SelectVehicle from './buying phase/SelectVehiclePage/SelectVehicle';
 import SelectParkingSlot from './buying phase/SelectParkingSlot/SelectParkingSlot';
+
 import { ParkingContext } from '../context/PakingContext';
+import { OrderContext } from '../context/OrderContext';
+
 import logo from '../Images/inner logo.svg';
 import watermark from '../Images/hidden logo.svg';
 
